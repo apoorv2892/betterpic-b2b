@@ -1266,7 +1266,7 @@ function PricingSection() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-4">Need more than 500 team members?</p>
+            <p className="text-muted-foreground mb-4">Need more than 1000 team members?</p>
             <Button variant="outline" className="rounded-full px-8 border-2">
               Contact Sales for Enterprise Pricing
               <ArrowRight className="ml-2 w-4 h-4" />
