@@ -901,203 +901,263 @@ function BenefitsSection() {
 }
 
 function PricingSection() {
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("annual");
+  const [teamSize, setTeamSize] = useState(25);
   
-  const plans = [
-    {
-      name: "Individual",
-      description: "Perfect for trying out AI headshots",
-      monthlyPrice: "29",
-      annualPrice: "29",
-      oneTime: true,
-      features: [
-        "1 person",
-        "40+ AI headshots",
-        "4K resolution",
-        "10 backgrounds",
-        "Delivered in 2 hours",
-        "Commercial license",
-      ],
-      cta: "Get Started",
-      popular: false,
-    },
-    {
-      name: "Team",
-      description: "Best value for small teams",
-      monthlyPrice: "25",
-      annualPrice: "19",
-      perPerson: true,
-      features: [
-        "5-50 team members",
-        "120+ AI headshots per person",
-        "4K resolution",
-        "25 backgrounds",
-        "Brand colors & custom backgrounds",
-        "Team admin dashboard",
-        "Priority support",
-        "Bulk download",
-      ],
-      cta: "Get a Quote",
-      popular: true,
-    },
-    {
-      name: "Enterprise",
-      description: "For large organizations",
-      monthlyPrice: "Custom",
-      annualPrice: "Custom",
-      features: [
-        "50+ team members",
-        "Unlimited AI headshots",
-        "4K+ resolution",
-        "Unlimited backgrounds",
-        "Custom brand guidelines",
-        "SSO & API access",
-        "Dedicated account manager",
-        "SLA guarantee",
-        "Invoice billing",
-      ],
-      cta: "Contact Sales",
-      popular: false,
-    },
+  const pricingTiers = [
+    { min: 2, max: 5, pricePerPerson: 39, name: "Starter" },
+    { min: 6, max: 10, pricePerPerson: 35, name: "Small Team" },
+    { min: 11, max: 25, pricePerPerson: 29, name: "Growing Team" },
+    { min: 26, max: 50, pricePerPerson: 25, name: "Medium Team" },
+    { min: 51, max: 100, pricePerPerson: 21, name: "Large Team" },
+    { min: 101, max: 250, pricePerPerson: 17, name: "Enterprise" },
+    { min: 251, max: 500, pricePerPerson: 14, name: "Enterprise Plus" },
   ];
+
+  const getCurrentTier = () => {
+    return pricingTiers.find(tier => teamSize >= tier.min && teamSize <= tier.max) || pricingTiers[pricingTiers.length - 1];
+  };
+
+  const currentTier = getCurrentTier();
+  const totalPrice = teamSize * currentTier.pricePerPerson;
+  const traditionalCost = teamSize * 150;
+  const savings = traditionalCost - totalPrice;
+  const savingsPercent = Math.round((savings / traditionalCost) * 100);
+
+  const features = [
+    { text: "120+ AI headshots per person", included: true },
+    { text: "4K ultra-high resolution", included: true },
+    { text: "Multiple background options", included: true },
+    { text: "Brand color customization", included: teamSize >= 6 },
+    { text: "Team admin dashboard", included: teamSize >= 6 },
+    { text: "Priority support", included: teamSize >= 11 },
+    { text: "Custom backgrounds upload", included: teamSize >= 26 },
+    { text: "Dedicated account manager", included: teamSize >= 51 },
+    { text: "API access", included: teamSize >= 101 },
+    { text: "SSO integration", included: teamSize >= 101 },
+    { text: "Custom SLA", included: teamSize >= 251 },
+  ];
+
+  const sliderStops = [2, 5, 10, 25, 50, 100, 250, 500];
+  
+  const getSliderValue = (size: number) => {
+    for (let i = 0; i < sliderStops.length; i++) {
+      if (size <= sliderStops[i]) {
+        if (i === 0) return (size / sliderStops[0]) * (100 / sliderStops.length);
+        const prevStop = sliderStops[i - 1];
+        const currStop = sliderStops[i];
+        const segmentStart = (i / sliderStops.length) * 100;
+        const segmentEnd = ((i + 1) / sliderStops.length) * 100;
+        const ratio = (size - prevStop) / (currStop - prevStop);
+        return segmentStart + ratio * (segmentEnd - segmentStart);
+      }
+    }
+    return 100;
+  };
+
+  const getSizeFromSlider = (value: number) => {
+    const segmentSize = 100 / sliderStops.length;
+    const segmentIndex = Math.floor(value / segmentSize);
+    
+    if (segmentIndex >= sliderStops.length - 1) return sliderStops[sliderStops.length - 1];
+    if (segmentIndex === 0) {
+      return Math.max(2, Math.round((value / segmentSize) * sliderStops[0]));
+    }
+    
+    const prevStop = sliderStops[segmentIndex - 1] || 2;
+    const currStop = sliderStops[segmentIndex];
+    const segmentStart = segmentIndex * segmentSize;
+    const ratio = (value - segmentStart) / segmentSize;
+    return Math.round(prevStop + ratio * (currStop - prevStop));
+  };
 
   return (
     <section id="pricing" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Pricing</p>
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Team Pricing</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Invest in Your Team&apos;s Professional Image
+            Professional Headshots for Your Entire Team
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Save up to 90% compared to traditional photography. No hidden fees.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            The more team members, the more you save. Slide to see your price.
           </p>
-          <div className="inline-flex items-center gap-2 bg-slate-100 rounded-full p-1">
-            <button
-              onClick={() => setBillingPeriod("monthly")}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                billingPeriod === "monthly"
-                  ? "bg-white text-foreground shadow-sm"
-                  : "text-muted-foreground"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingPeriod("annual")}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                billingPeriod === "annual"
-                  ? "bg-white text-foreground shadow-sm"
-                  : "text-muted-foreground"
-              }`}
-            >
-              Annual
-              <span className="ml-2 text-xs text-primary font-semibold">Save 24%</span>
-            </button>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl border border-border shadow-xl overflow-hidden">
+            <div className="p-8 lg:p-12">
+              <div className="mb-10">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-lg font-medium text-foreground">Team Size</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-4xl font-bold text-primary">{teamSize}</span>
+                    <span className="text-muted-foreground">people</span>
+                  </div>
+                </div>
+                
+                <div className="relative">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={getSliderValue(teamSize)}
+                    onChange={(e) => setTeamSize(getSizeFromSlider(Number(e.target.value)))}
+                    className="w-full h-3 bg-slate-200 rounded-full appearance-none cursor-pointer slider-thumb"
+                    style={{
+                      background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${getSliderValue(teamSize)}%, #e2e8f0 ${getSliderValue(teamSize)}%, #e2e8f0 100%)`
+                    }}
+                  />
+                  <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                    {sliderStops.map((stop) => (
+                      <button
+                        key={stop}
+                        onClick={() => setTeamSize(stop)}
+                        className={`hover:text-primary transition-colors ${teamSize === stop ? 'text-primary font-semibold' : ''}`}
+                      >
+                        {stop}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div>
+                  <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-6 mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-sm font-medium text-primary uppercase tracking-wider">{currentTier.name}</span>
+                      {teamSize >= 51 && (
+                        <span className="bg-primary text-white text-xs px-2 py-0.5 rounded-full">Best Value</span>
+                      )}
+                    </div>
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <span className="text-5xl font-bold text-foreground">${currentTier.pricePerPerson}</span>
+                      <span className="text-muted-foreground">/person</span>
+                    </div>
+                    <div className="flex items-center gap-4 mt-4 pt-4 border-t border-primary/20">
+                      <div>
+                        <p className="text-2xl font-bold text-foreground">${totalPrice.toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">Total for {teamSize} people</p>
+                      </div>
+                      <div className="h-10 w-px bg-primary/20" />
+                      <div>
+                        <p className="text-2xl font-bold text-primary">{savingsPercent}% off</p>
+                        <p className="text-sm text-muted-foreground">vs traditional photos</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-900 rounded-2xl p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-slate-400">Traditional photography</span>
+                      <span className="text-slate-400 line-through">${traditionalCost.toLocaleString()}</span>
+                    </div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-white font-medium">BetterPic</span>
+                      <span className="text-white font-bold">${totalPrice.toLocaleString()}</span>
+                    </div>
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-700">
+                      <span className="text-primary font-medium">You save</span>
+                      <span className="text-primary font-bold text-xl">${savings.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-foreground mb-4">What&apos;s included:</h4>
+                  <ul className="space-y-3">
+                    {features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        {feature.included ? (
+                          <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                        ) : (
+                          <div className="w-5 h-5 rounded-full border-2 border-slate-200 flex-shrink-0" />
+                        )}
+                        <span className={feature.included ? "text-foreground" : "text-muted-foreground"}>
+                          {feature.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="flex-1 bg-primary hover:bg-primary/90 text-white rounded-full h-14 text-lg"
+                >
+                  Get Started - ${totalPrice.toLocaleString()}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full h-14 text-lg border-2 px-8"
+                >
+                  Book a Demo
+                </Button>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 px-8 lg:px-12 py-6 border-t border-border">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                  <span>No credit card required</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                  <span>2-hour delivery</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                  <span>100% satisfaction guarantee</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                  <span>Unlimited regenerations</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`relative bg-white rounded-3xl p-8 border ${
-                plan.popular
-                  ? "border-primary shadow-xl ring-2 ring-primary/20"
-                  : "border-border"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-primary text-white text-sm font-medium px-4 py-1.5 rounded-full shadow-lg">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">
-                  {plan.name}
-                </h3>
-                <p className="text-muted-foreground text-sm">{plan.description}</p>
-              </div>
-              <div className="mb-6">
-                <div className="flex items-baseline gap-1">
-                  {plan.monthlyPrice !== "Custom" && (
-                    <span className="text-lg text-muted-foreground">$</span>
-                  )}
-                  <span className="text-5xl font-bold text-foreground">
-                    {billingPeriod === "annual" ? plan.annualPrice : plan.monthlyPrice}
-                  </span>
-                  {plan.monthlyPrice !== "Custom" && (
-                    <span className="text-muted-foreground ml-1">
-                      {plan.oneTime ? "one-time" : plan.perPerson ? "/person" : "/mo"}
-                    </span>
-                  )}
-                </div>
-                {plan.perPerson && billingPeriod === "annual" && (
-                  <p className="text-sm text-primary mt-1">Billed annually</p>
-                )}
-              </div>
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                className={`w-full rounded-full h-12 ${
-                  plan.popular
-                    ? "bg-primary hover:bg-primary/90 text-white"
-                    : "bg-slate-900 hover:bg-slate-800 text-white"
-                }`}
-              >
-                {plan.cta}
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
-          ))}
-        </div>
-        <div className="mt-16 bg-slate-900 rounded-3xl p-8 lg:p-12">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                Not sure which plan is right for you?
-              </h3>
-              <p className="text-slate-400 mb-6">
-                Our team will help you find the perfect solution for your organization. Get a personalized quote in minutes.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-                  Get a Custom Quote
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <Button variant="outline" className="border-slate-600 text-white hover:bg-slate-800 rounded-full px-8">
-                  Schedule a Demo
-                </Button>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-slate-800 rounded-2xl p-6">
-                <p className="text-3xl font-bold text-white mb-1">90%</p>
-                <p className="text-slate-400 text-sm">Cost savings vs traditional photography</p>
-              </div>
-              <div className="bg-slate-800 rounded-2xl p-6">
-                <p className="text-3xl font-bold text-white mb-1">2hrs</p>
-                <p className="text-slate-400 text-sm">Average delivery time</p>
-              </div>
-              <div className="bg-slate-800 rounded-2xl p-6">
-                <p className="text-3xl font-bold text-white mb-1">100%</p>
-                <p className="text-slate-400 text-sm">Satisfaction guarantee</p>
-              </div>
-              <div className="bg-slate-800 rounded-2xl p-6">
-                <p className="text-3xl font-bold text-white mb-1">24/7</p>
-                <p className="text-slate-400 text-sm">Priority support</p>
-              </div>
-            </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-4">Need more than 500 team members?</p>
+            <Button variant="outline" className="rounded-full px-8 border-2">
+              Contact Sales for Enterprise Pricing
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: white;
+          border: 4px solid hsl(var(--primary));
+          cursor: pointer;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+          transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+          transform: scale(1.1);
+        }
+        input[type="range"]::-moz-range-thumb {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: white;
+          border: 4px solid hsl(var(--primary));
+          cursor: pointer;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+      `}</style>
     </section>
   );
 }
