@@ -580,7 +580,7 @@ function TrustpilotBadge({ className = "" }: { className?: string }) {
         ))}
       </div>
       <div className="text-sm">
-        <span className="font-semibold">4.8</span>
+        <span className="font-semibold">4.7</span>
         <span className="text-muted-foreground"> / 5 on </span>
         <span className="font-semibold text-[#00b67a]">Trustpilot</span>
       </div>
