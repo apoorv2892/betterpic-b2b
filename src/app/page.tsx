@@ -1565,7 +1565,7 @@ function FAQSection() {
 
 function CTASection() {
   return (
-    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-emerald-600">
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-violet-600">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
           Ready to Transform Your Team&apos;s Image?
