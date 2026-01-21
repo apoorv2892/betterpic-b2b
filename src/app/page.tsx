@@ -1494,10 +1494,12 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <ComplianceSection />
         <StatsSection />
         <LogosSection />
         <TeamShowcaseSection />
         <BeforeAfterSection />
+        <CaseStudiesSection />
         <HowItWorksSection />
         <UseCasesSection />
         <BenefitsSection />
