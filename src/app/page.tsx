@@ -178,7 +178,7 @@ function HeroSection() {
                   <span className="text-xs font-medium">SOC 2 Certified</span>
                 </div>
                 <div className="h-6 w-px bg-border hidden sm:block" />
-                <span className="text-sm text-muted-foreground">10,000+ companies</span>
+                <span className="text-sm text-muted-foreground">1,000+ Reviews</span>
               </div>
           </div>
           <div className="relative">
