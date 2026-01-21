@@ -2027,12 +2027,12 @@ export default function Home() {
         <TeamShowcaseSection />
         <BeforeAfterSection />
         <CaseStudiesSection />
+        <IndustriesSection />
         <HowItWorksSection />
         <UseCasesSection />
         <BenefitsSection />
         <PricingSection />
         <GallerySection />
-        <IndustriesSection />
         <TestimonialsSection />
         <GetQuoteSection />
         <FAQSection />
