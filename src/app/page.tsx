@@ -1365,12 +1365,54 @@ function GallerySection() {
 
 function IndustriesSection() {
   const industries = [
-    { name: "Technology", icon: Zap, count: "2,500+" },
-    { name: "Finance & Banking", icon: Building2, count: "1,200+" },
-    { name: "Healthcare", icon: HeartHandshake, count: "800+" },
-    { name: "Legal Services", icon: Briefcase, count: "600+" },
-    { name: "Real Estate", icon: Target, count: "950+" },
-    { name: "Consulting", icon: Users, count: "1,100+" },
+    {
+      name: "Healthcare",
+      icon: HeartHandshake,
+      image: "1576091160399-112ba8d25d1d",
+      description: "Patients trust doctors they can see. Professional headshots for your practice website, health directories, and patient portals help establish credibility before the first appointment.",
+      features: [
+        "HIPAA-compliant processing",
+        "Consistent look across multi-location practices",
+        "Perfect for hospital networks and group practices",
+        "Match existing clinic branding",
+      ],
+    },
+    {
+      name: "Legal Professionals",
+      icon: Briefcase,
+      image: "1556157382-97eda2d62296",
+      description: "First impressions matter in law. Professional headshots for your firm's website, attorney directories, and court profiles convey authority, trust, and expertise.",
+      features: [
+        "Formal, professional aesthetic",
+        "Consistent branding for partner and associate photos",
+        "Quick turnaround for new hires",
+        "Perfect for law firm websites and legal directories",
+      ],
+    },
+    {
+      name: "Real Estate Agents",
+      icon: Target,
+      image: "1560518883-ce09059eeffa",
+      description: "Your face is your brand. Professional headshots for listings, business cards, and social media help you stand out in a competitive market.",
+      features: [
+        "Multiple style variations for different platforms",
+        "Optimized for MLS and property listings",
+        "Social media-ready formats",
+        "Annual updates included",
+      ],
+    },
+    {
+      name: "Corporate Teams",
+      icon: Building2,
+      image: "1497366216548-37526070297c",
+      description: "Scale your team photography without the scheduling nightmare. From startups to Fortune 500 companies, maintain brand consistency across every office and every hire.",
+      features: [
+        "Onboard new hires in hours, not weeks",
+        "Perfect consistency across global offices",
+        "Bulk pricing for large teams",
+        "Dedicated account manager",
+      ],
+    },
   ];
 
   return (
@@ -1381,22 +1423,40 @@ function IndustriesSection() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Trusted Across Industries
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From startups to Fortune 500 companies, teams across every industry trust us
-          </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              className="bg-white rounded-3xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 group"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                <industry.icon className="w-6 h-6 text-primary" />
+              <div className="aspect-[16/9] relative overflow-hidden">
+                <Image
+                  src={`https://images.unsplash.com/photo-${industry.image}?w=800&h=450&fit=crop`}
+                  alt={industry.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <industry.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{industry.name}</h3>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold text-foreground">{industry.name}</h3>
-                <p className="text-sm text-primary font-medium">{industry.count} companies</p>
+              <div className="p-6">
+                <p className="text-muted-foreground mb-4">{industry.description}</p>
+                <ul className="space-y-2">
+                  {industry.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span className="text-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
