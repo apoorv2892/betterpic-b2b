@@ -1432,44 +1432,55 @@ function TestimonialsSection() {
               See what HR and People Ops leaders say about transforming their team photos
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl p-8 border border-border hover:shadow-lg transition-all duration-300"
-            >
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 text-yellow-400 fill-yellow-400"
+            <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-3xl p-8 border border-border hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-5 h-5 bg-[#00b67a] flex items-center justify-center">
+                        <Star className="w-3 h-3 text-white fill-white" />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-xs text-[#00b67a] font-medium">Verified on Trustpilot</span>
+                </div>
+                <p className="text-foreground mb-6 text-lg leading-relaxed">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={`https://images.unsplash.com/photo-${testimonial.avatar}?w=48&h=48&fit=crop&crop=face`}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-full object-cover"
                   />
-                ))}
-              </div>
-              <p className="text-foreground mb-6 text-lg leading-relaxed">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-4">
-                <Image
-                  src={`https://images.unsplash.com/photo-${testimonial.avatar}?w=48&h=48&fit=crop&crop=face`}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.role}, {testimonial.company}
-                  </p>
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.author}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {testimonial.role}, {testimonial.company}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <a 
+              href="#" 
+              className="inline-flex items-center gap-2 text-[#00b67a] font-medium hover:underline"
+            >
+              See all 2,947 reviews on Trustpilot
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
 }
 
 function FAQSection() {
