@@ -1631,12 +1631,15 @@ function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-2 mb-4">
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/betterpic_logo-1768994589325.jpeg?width=8000&height=8000&resize=contain"
+                  alt="BetterPic"
+                  width={100}
+                  height={32}
+                  className="h-8 w-auto object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-foreground">BetterPic</span>
-            </div>
             <p className="text-muted-foreground text-sm mb-4">
               Professional AI headshots for modern teams. Fast, consistent, and affordable.
             </p>
