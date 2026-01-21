@@ -20,29 +20,103 @@ import {
   Building2,
   Globe,
   Layers,
+  Star,
+  Camera,
+  Briefcase,
+  UserCheck,
+  Image as ImageIcon,
+  BadgeCheck,
+  HeartHandshake,
+  Menu,
+  X,
+  ChevronRight,
+  Play,
+  Award,
+  Target,
+  TrendingUp,
 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  const navLinks = [
+    { name: "How It Works", href: "#how-it-works" },
+    { name: "Benefits", href: "#benefits" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "FAQ", href: "#faq" },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-foreground">BetterPic</span>
           </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden sm:inline-flex">
+          
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden lg:flex items-center gap-4">
+            <Button variant="ghost" className="text-sm font-medium">
               Log in
             </Button>
             <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-              Get team headshots
+              Get a Quote
             </Button>
           </div>
+
+          <button
+            className="lg:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-border/50">
+            <nav className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
+                <Button variant="ghost" className="justify-start">
+                  Log in
+                </Button>
+                <Button className="bg-primary hover:bg-primary/90 text-white rounded-full">
+                  Get a Quote
+                </Button>
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
@@ -50,26 +124,26 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-emerald-50/50 to-white">
+    <section className="pt-24 lg:pt-32 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-emerald-50/50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium">
               <Sparkles className="w-4 h-4" />
-              AI-Powered Team Headshots
+              AI-Powered Corporate Headshots
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Professional headshots for your entire team
+              Professional Corporate Headshots for Your Team
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
-              Get studio-quality AI headshots for every team member in minutes, not weeks. Perfect for remote teams, company directories, and LinkedIn profiles.
+              Get studio-quality AI headshots for your entire organization. Perfect for company directories, LinkedIn profiles, and professional branding.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-14 text-lg"
               >
-                Get team headshots
+                Get a Quote
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button
@@ -77,7 +151,7 @@ function HeroSection() {
                 variant="outline"
                 className="rounded-full px-8 h-14 text-lg border-2"
               >
-                Book a demo
+                View Samples
               </Button>
             </div>
             <div className="flex items-center gap-6 pt-4">
@@ -106,8 +180,12 @@ function HeroSection() {
                 ))}
               </div>
               <div className="text-sm">
-                <span className="font-semibold text-foreground">10,000+</span>
-                <span className="text-muted-foreground"> teams trust us</span>
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <span className="text-muted-foreground">Trusted by 10,000+ companies</span>
               </div>
             </div>
           </div>
@@ -155,20 +233,44 @@ function HeroSection() {
   );
 }
 
-function LogosSection() {
-  const logos = [
-    "Stripe",
-    "Notion",
-    "Figma",
-    "Linear",
-    "Vercel",
-    "Shopify",
-    "Slack",
-    "Discord",
+function StatsSection() {
+  const stats = [
+    { value: "50,000+", label: "Headshots Delivered" },
+    { value: "10,000+", label: "Happy Companies" },
+    { value: "2 Hours", label: "Average Turnaround" },
+    { value: "99%", label: "Satisfaction Rate" },
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 border-y border-border/50 bg-slate-50/50">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-primary">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <p className="text-3xl lg:text-4xl font-bold text-white">{stat.value}</p>
+              <p className="text-white/80 mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LogosSection() {
+  const logos = [
+    "Google",
+    "Microsoft",
+    "Amazon",
+    "Meta",
+    "Apple",
+    "Netflix",
+    "Salesforce",
+    "Adobe",
+  ];
+
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-border/50 bg-slate-50/50">
       <div className="max-w-7xl mx-auto">
         <p className="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
           Trusted by leading companies worldwide
@@ -188,44 +290,129 @@ function LogosSection() {
   );
 }
 
+function BeforeAfterSection() {
+  const transformations = [
+    {
+      before: "1507003211169-0a1dd7228f2d",
+      after: "1560250097-0b93528c311a",
+      name: "John Smith",
+      role: "Software Engineer",
+    },
+    {
+      before: "1438761681033-6461ffad8d80",
+      after: "1573496359142-b8d87734a5a2",
+      name: "Sarah Johnson",
+      role: "Marketing Director",
+    },
+    {
+      before: "1500648767791-00dcc994a43e",
+      after: "1472099645785-5658abf4ff4e",
+      name: "Michael Chen",
+      role: "Product Manager",
+    },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            See the Transformation
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            From casual selfies to professional corporate headshots in minutes
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {transformations.map((item, index) => (
+            <div key={index} className="bg-white rounded-3xl p-6 border border-border shadow-sm">
+              <div className="flex gap-4 mb-4">
+                <div className="flex-1">
+                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">Before</p>
+                  <div className="rounded-xl overflow-hidden aspect-square relative">
+                    <Image
+                      src={`https://images.unsplash.com/photo-${item.before}?w=300&h=300&fit=crop&crop=face`}
+                      alt="Before"
+                      fill
+                      className="object-cover grayscale-[30%]"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <ArrowRight className="w-6 h-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">After</p>
+                  <div className="rounded-xl overflow-hidden aspect-square relative">
+                    <Image
+                      src={`https://images.unsplash.com/photo-${item.after}?w=300&h=300&fit=crop&crop=face`}
+                      alt="After"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="text-center pt-4 border-t border-border">
+                <p className="font-semibold text-foreground">{item.name}</p>
+                <p className="text-sm text-muted-foreground">{item.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
+          >
+            View More Examples
+            <ChevronRight className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HowItWorksSection() {
   const steps = [
     {
       icon: Upload,
       number: "01",
-      title: "Upload photos",
+      title: "Upload Your Photos",
       description:
         "Each team member uploads 10-15 casual photos from their phone. No professional equipment needed.",
     },
     {
       icon: Sparkles,
       number: "02",
-      title: "AI creates headshots",
+      title: "AI Creates Headshots",
       description:
         "Our AI generates multiple professional headshot options for each person in your selected style.",
     },
     {
       icon: Layers,
       number: "03",
-      title: "Review & select",
+      title: "Review & Select",
       description:
         "Team members pick their favorites from the generated options. Make unlimited regenerations.",
     },
     {
       icon: Download,
       number: "04",
-      title: "Download & use",
+      title: "Download & Use",
       description:
         "Get high-resolution headshots ready for LinkedIn, company websites, and internal directories.",
     },
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Simple Process</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            How it works
+            How It Works
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Get professional headshots for your entire team in four simple steps
@@ -252,6 +439,92 @@ function HowItWorksSection() {
             </div>
           ))}
         </div>
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
+          >
+            Get Started Now
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UseCasesSection() {
+  const useCases = [
+    {
+      icon: Building2,
+      title: "Company Directories",
+      description: "Create a unified, professional look for your entire organization's employee directory.",
+      image: "1497366216548-37526070297c",
+    },
+    {
+      icon: Globe,
+      title: "LinkedIn & Social Media",
+      description: "Equip your team with professional headshots perfect for LinkedIn and professional networks.",
+      image: "1497366811353-6870744d04b2",
+    },
+    {
+      icon: Briefcase,
+      title: "Marketing Materials",
+      description: "Professional photos ready for press releases, marketing collateral, and presentations.",
+      image: "1553877522-43269d4ea984",
+    },
+    {
+      icon: UserCheck,
+      title: "New Hire Onboarding",
+      description: "Get new employees professional headshots from day one, matching the team's style.",
+      image: "1522071820081-009f0129c71c",
+    },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Use Cases</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Perfect for Every Business Need
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Professional headshots that work across all your business applications
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {useCases.map((useCase, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-3xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
+            >
+              <div className="aspect-[16/9] relative overflow-hidden">
+                <Image
+                  src={`https://images.unsplash.com/photo-${useCase.image}?w=800&h=450&fit=crop`}
+                  alt={useCase.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <useCase.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{useCase.title}</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-muted-foreground">{useCase.description}</p>
+                <a href="#" className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:gap-3 transition-all">
+                  Learn more <ChevronRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -261,48 +534,49 @@ function BenefitsSection() {
   const benefits = [
     {
       icon: Clock,
-      title: "Save weeks of time",
+      title: "Save Weeks of Time",
       description:
         "No more scheduling conflicts or coordinating photographers. Get headshots for 100+ people in a single day.",
     },
     {
       icon: Users,
-      title: "Perfect for remote teams",
+      title: "Perfect for Remote Teams",
       description:
         "Team members can upload photos from anywhere in the world. No need to fly everyone to one location.",
     },
     {
       icon: Zap,
-      title: "Consistent brand look",
+      title: "Consistent Brand Look",
       description:
         "Every headshot matches your brand guidelines with uniform backgrounds, lighting, and style.",
     },
     {
       icon: Shield,
-      title: "Enterprise security",
+      title: "Enterprise Security",
       description:
         "SOC 2 compliant with data encryption. Photos are processed securely and never used for training.",
     },
     {
-      icon: Building2,
-      title: "Scale with your team",
+      icon: Award,
+      title: "Professional Quality",
       description:
-        "Onboard new hires with matching headshots instantly. No need to wait for the next photo day.",
+        "Studio-quality results that rival traditional photography. Perfect lighting and retouching included.",
     },
     {
-      icon: Globe,
-      title: "Works globally",
+      icon: TrendingUp,
+      title: "Scale Effortlessly",
       description:
-        "Support for diverse skin tones and appearances. Professional results for everyone on your team.",
+        "From 5 to 5,000 employees. Our platform handles teams of any size with consistent quality.",
     },
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <section id="benefits" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Benefits</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Why teams choose AI headshots
+            Why Companies Choose Us
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             The modern solution for HR, People Ops, and distributed companies
@@ -329,70 +603,227 @@ function BenefitsSection() {
   );
 }
 
-function ExamplesSection() {
-  const categories = [
-    { name: "Tech Companies", count: "500+" },
-    { name: "Finance & Legal", count: "200+" },
-    { name: "Healthcare", count: "150+" },
-    { name: "Real Estate", count: "300+" },
+function PricingSection() {
+  const plans = [
+    {
+      name: "Starter",
+      description: "Perfect for small teams",
+      price: "29",
+      per: "per person",
+      features: [
+        "5-20 team members",
+        "40+ AI headshots per person",
+        "3 background options",
+        "HD resolution downloads",
+        "48-hour delivery",
+        "Basic retouching",
+      ],
+      cta: "Get Started",
+      popular: false,
+    },
+    {
+      name: "Professional",
+      description: "Best for growing companies",
+      price: "19",
+      per: "per person",
+      features: [
+        "21-100 team members",
+        "80+ AI headshots per person",
+        "10 background options",
+        "4K resolution downloads",
+        "24-hour delivery",
+        "Advanced retouching",
+        "Brand color backgrounds",
+        "Dedicated support",
+      ],
+      cta: "Get a Quote",
+      popular: true,
+    },
+    {
+      name: "Enterprise",
+      description: "For large organizations",
+      price: "Custom",
+      per: "",
+      features: [
+        "100+ team members",
+        "Unlimited AI headshots",
+        "Custom backgrounds",
+        "4K+ resolution",
+        "Priority delivery",
+        "Premium retouching",
+        "SSO integration",
+        "API access",
+        "Dedicated account manager",
+      ],
+      cta: "Contact Sales",
+      popular: false,
+    },
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Pricing</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Headshots for every industry
+            Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Trusted by teams across tech, finance, healthcare, and more
+            Choose the plan that fits your team size. No hidden fees.
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="grid grid-cols-4 gap-2">
-            {[
-              "1560250097-0b93528c311a",
-              "1573496359142-b8d87734a5a2",
-              "1472099645785-5658abf4ff4e",
-              "1580489944761-15a19d654956",
-              "1519345182560-3f2917c472ef",
-              "1534528741775-53994a69daeb",
-              "1507003211169-0a1dd7228f2d",
-              "1438761681033-6461ffad8d80",
-              "1500648767791-00dcc994a43e",
-              "1494790108377-be9c29b29330",
-              "1544005313-94ddf0286df2",
-              "1506794778202-cad84cf45f1d",
-            ].map((id, i) => (
-              <div key={i} className="rounded-xl overflow-hidden">
-                <Image
-                  src={`https://images.unsplash.com/photo-${id}?w=150&h=150&fit=crop&crop=face`}
-                  alt=""
-                  width={150}
-                  height={150}
-                  className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="space-y-6">
-            {categories.map((category, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-6 bg-white rounded-2xl border border-border hover:border-primary/30 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-lg font-semibold text-foreground">
-                    {category.name}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className={`relative bg-white rounded-3xl p-8 border ${
+                plan.popular
+                  ? "border-primary shadow-xl scale-105"
+                  : "border-border"
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="bg-primary text-white text-sm font-medium px-4 py-1 rounded-full">
+                    Most Popular
                   </span>
                 </div>
-                <span className="text-primary font-bold">{category.count} teams</span>
+              )}
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-muted-foreground text-sm">{plan.description}</p>
               </div>
-            ))}
-          </div>
+              <div className="text-center mb-6">
+                <span className="text-4xl font-bold text-foreground">
+                  {plan.price === "Custom" ? "" : "$"}
+                  {plan.price}
+                </span>
+                {plan.per && (
+                  <span className="text-muted-foreground ml-2">{plan.per}</span>
+                )}
+              </div>
+              <ul className="space-y-3 mb-8">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-muted-foreground text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                className={`w-full rounded-full ${
+                  plan.popular
+                    ? "bg-primary hover:bg-primary/90 text-white"
+                    : "bg-slate-100 hover:bg-slate-200 text-foreground"
+                }`}
+              >
+                {plan.cta}
+              </Button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GallerySection() {
+  const images = [
+    "1560250097-0b93528c311a",
+    "1573496359142-b8d87734a5a2",
+    "1472099645785-5658abf4ff4e",
+    "1580489944761-15a19d654956",
+    "1519345182560-3f2917c472ef",
+    "1534528741775-53994a69daeb",
+    "1507003211169-0a1dd7228f2d",
+    "1438761681033-6461ffad8d80",
+    "1500648767791-00dcc994a43e",
+    "1494790108377-be9c29b29330",
+    "1544005313-94ddf0286df2",
+    "1506794778202-cad84cf45f1d",
+  ];
+
+  return (
+    <section id="gallery" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Gallery</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Professional Results, Every Time
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Browse our gallery of AI-generated corporate headshots
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {images.map((id, i) => (
+            <div
+              key={i}
+              className="rounded-2xl overflow-hidden aspect-[3/4] relative group"
+            >
+              <Image
+                src={`https://images.unsplash.com/photo-${id}?w=300&h=400&fit=crop&crop=face`}
+                alt=""
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            variant="outline"
+            className="rounded-full px-8 border-2"
+          >
+            View Full Gallery
+            <ChevronRight className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function IndustriesSection() {
+  const industries = [
+    { name: "Technology", icon: Zap, count: "2,500+" },
+    { name: "Finance & Banking", icon: Building2, count: "1,200+" },
+    { name: "Healthcare", icon: HeartHandshake, count: "800+" },
+    { name: "Legal Services", icon: Briefcase, count: "600+" },
+    { name: "Real Estate", icon: Target, count: "950+" },
+    { name: "Consulting", icon: Users, count: "1,100+" },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Industries</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Trusted Across Industries
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            From startups to Fortune 500 companies, teams across every industry trust us
+          </p>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {industries.map((industry, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                <industry.icon className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">{industry.name}</h3>
+                <p className="text-sm text-primary font-medium">{industry.count} companies</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -403,36 +834,40 @@ function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "We onboarded 150 new hires last quarter. BetterPic made sure everyone had matching, professional headshots from day one.",
+        "We onboarded 150 new hires last quarter. BetterPic made sure everyone had matching, professional headshots from day one. The quality is indistinguishable from traditional photography.",
       author: "Sarah Chen",
-      role: "VP of People, TechCorp",
+      role: "VP of People",
+      company: "TechCorp",
       avatar: "1494790108377-be9c29b29330",
     },
     {
       quote:
-        "Our remote team spans 12 countries. This was the only way to get consistent headshots without flying everyone to HQ.",
+        "Our remote team spans 12 countries. This was the only way to get consistent headshots without flying everyone to HQ. The turnaround time was incredible.",
       author: "Marcus Johnson",
-      role: "HR Director, GlobalScale",
+      role: "HR Director",
+      company: "GlobalScale",
       avatar: "1507003211169-0a1dd7228f2d",
     },
     {
       quote:
-        "The quality exceeded our expectations. We replaced outdated photos for our entire executive team in one afternoon.",
+        "The quality exceeded our expectations. We replaced outdated photos for our entire executive team in one afternoon. Our board was impressed.",
       author: "Emily Rodriguez",
-      role: "Brand Manager, FinanceFirst",
+      role: "Brand Manager",
+      company: "FinanceFirst",
       avatar: "1573497019940-1c28c88b4f3e",
     },
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Testimonials</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Loved by People teams
+            What Our Customers Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See why HR and People Ops leaders choose AI headshots
+            Hear from HR and People Ops leaders who transformed their team photos
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -443,13 +878,10 @@ function TestimonialsSection() {
             >
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <svg
+                  <Star
                     key={i}
-                    className="w-5 h-5 text-yellow-400 fill-current"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
+                    className="w-5 h-5 text-yellow-400 fill-yellow-400"
+                  />
                 ))}
               </div>
               <p className="text-foreground mb-6 text-lg leading-relaxed">
@@ -465,7 +897,9 @@ function TestimonialsSection() {
                 />
                 <div>
                   <p className="font-semibold text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.role}, {testimonial.company}
+                  </p>
                 </div>
               </div>
             </div>
@@ -513,14 +947,20 @@ function FAQSection() {
       answer:
         "Absolutely! Your team style settings are saved. New hires can generate headshots that perfectly match your existing team's look.",
     },
+    {
+      question: "Do you offer volume discounts?",
+      answer:
+        "Yes, we offer significant volume discounts for teams over 50 people. Contact our sales team for a custom quote tailored to your organization's needs.",
+    },
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">FAQ</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Frequently asked questions
+            Frequently Asked Questions
           </h2>
           <p className="text-lg text-muted-foreground">
             Everything you need to know about AI headshots for teams
@@ -549,21 +989,21 @@ function FAQSection() {
 
 function CTASection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-emerald-600">
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary to-emerald-600">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-          Ready to upgrade your team&apos;s headshots?
+          Ready to Transform Your Team&apos;s Image?
         </h2>
         <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-          Join thousands of companies who trust AI headshots for their professional image.
-          Get started in minutes.
+          Join thousands of companies who trust us for their professional headshots. 
+          Get started in minutes with no commitment.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
             className="bg-white text-primary hover:bg-white/90 rounded-full px-10 h-14 text-lg font-semibold"
           >
-            Get team headshots
+            Get a Quote
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           <Button
@@ -571,11 +1011,11 @@ function CTASection() {
             variant="outline"
             className="bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-full px-10 h-14 text-lg"
           >
-            Book a demo
+            Book a Demo
           </Button>
         </div>
         <p className="text-white/70 mt-8 text-sm">
-          No credit card required • Free trial for teams up to 5 people
+          No credit card required • Free consultation • Volume discounts available
         </p>
       </div>
     </section>
@@ -583,33 +1023,92 @@ function CTASection() {
 }
 
 function Footer() {
+  const footerLinks = {
+    Product: [
+      { name: "Features", href: "#" },
+      { name: "Pricing", href: "#pricing" },
+      { name: "Gallery", href: "#gallery" },
+      { name: "API", href: "#" },
+    ],
+    Company: [
+      { name: "About Us", href: "#" },
+      { name: "Careers", href: "#" },
+      { name: "Press", href: "#" },
+      { name: "Contact", href: "#" },
+    ],
+    Resources: [
+      { name: "Blog", href: "#" },
+      { name: "Help Center", href: "#" },
+      { name: "Case Studies", href: "#" },
+      { name: "Guides", href: "#" },
+    ],
+    Legal: [
+      { name: "Privacy Policy", href: "#" },
+      { name: "Terms of Service", href: "#" },
+      { name: "Security", href: "#" },
+      { name: "GDPR", href: "#" },
+    ],
+  };
+
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border">
+    <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold text-foreground">BetterPic</span>
             </div>
-            <span className="text-xl font-bold text-foreground">BetterPic</span>
+            <p className="text-muted-foreground text-sm mb-4">
+              Professional AI headshots for modern teams. Fast, consistent, and affordable.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Terms
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Security
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Contact
-            </a>
-          </div>
+          {Object.entries(footerLinks).map(([category, links]) => (
+            <div key={category}>
+              <h4 className="font-semibold text-foreground mb-4">{category}</h4>
+              <ul className="space-y-2">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
             © 2026 BetterPic. All rights reserved.
           </p>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Shield className="w-4 h-4" />
+              SOC 2 Certified
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <BadgeCheck className="w-4 h-4" />
+              GDPR Compliant
+            </div>
+          </div>
         </div>
       </div>
     </footer>
@@ -622,10 +1121,15 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <StatsSection />
         <LogosSection />
+        <BeforeAfterSection />
         <HowItWorksSection />
+        <UseCasesSection />
         <BenefitsSection />
-        <ExamplesSection />
+        <PricingSection />
+        <GallerySection />
+        <IndustriesSection />
         <TestimonialsSection />
         <FAQSection />
         <CTASection />
