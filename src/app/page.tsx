@@ -1412,18 +1412,27 @@ function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Testimonials</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            What Our Customers Say
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hear from HR and People Ops leaders who transformed their team photos
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
+      <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-6 h-6 bg-[#00b67a] flex items-center justify-center">
+                    <Star className="w-4 h-4 text-white fill-white" />
+                  </div>
+                ))}
+              </div>
+              <span className="text-lg font-semibold">4.8 out of 5</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              Trusted by 2,947+ Happy Customers
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              See what HR and People Ops leaders say about transforming their team photos
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
