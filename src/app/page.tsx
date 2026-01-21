@@ -54,10 +54,13 @@ function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">BetterPic</span>
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/betterpic_logo-1768994589325.jpeg?width=8000&height=8000&resize=contain"
+              alt="BetterPic"
+              width={120}
+              height={40}
+              className="h-9 w-auto object-contain"
+            />
           </div>
           
           <nav className="hidden lg:flex items-center gap-8">
