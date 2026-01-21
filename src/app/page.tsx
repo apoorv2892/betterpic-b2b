@@ -553,6 +553,124 @@ function BeforeAfterSection() {
   );
 }
 
+function CaseStudiesSection() {
+  const caseStudies = [
+    {
+      company: "TechCorp",
+      industry: "Technology",
+      employees: "500+",
+      result: "Reduced headshot costs by 80%",
+      quote: "BetterPic transformed how we handle employee photos. What used to take weeks now takes hours.",
+      author: "Sarah Chen",
+      role: "VP of People Operations",
+      avatar: "1494790108377-be9c29b29330",
+      logo: "T",
+      color: "bg-blue-500",
+    },
+    {
+      company: "GlobalFinance",
+      industry: "Financial Services",
+      employees: "2,000+",
+      result: "100% brand consistency achieved",
+      quote: "Every employee now has a professional headshot that matches our brand guidelines perfectly.",
+      author: "James Wilson",
+      role: "Chief Marketing Officer",
+      avatar: "1472099645785-5658abf4ff4e",
+      logo: "G",
+      color: "bg-emerald-500",
+    },
+    {
+      company: "HealthFirst",
+      industry: "Healthcare",
+      employees: "1,200+",
+      result: "Saved 3 months of coordination",
+      quote: "With staff across 50 locations, traditional photography was impossible. BetterPic made it seamless.",
+      author: "Dr. Emily Rodriguez",
+      role: "Director of HR",
+      avatar: "1573497019940-1c28c88b4f3e",
+      logo: "H",
+      color: "bg-rose-500",
+    },
+  ];
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Case Studies</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Success Stories from Leading Companies
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            See how organizations are transforming their team photos with AI
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {caseStudies.map((study, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl p-8 border border-border hover:shadow-xl transition-all duration-300 group"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className={`w-12 h-12 ${study.color} rounded-xl flex items-center justify-center text-white font-bold text-xl`}>
+                  {study.logo}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground">{study.company}</h3>
+                  <p className="text-sm text-muted-foreground">{study.industry}</p>
+                </div>
+              </div>
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Employees</span>
+                  <span className="font-medium text-foreground">{study.employees}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Result</span>
+                  <span className="font-medium text-primary">{study.result}</span>
+                </div>
+              </div>
+              <p className="text-muted-foreground mb-6 italic">
+                &ldquo;{study.quote}&rdquo;
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t border-border">
+                <Image
+                  src={`https://images.unsplash.com/photo-${study.avatar}?w=40&h=40&fit=crop&crop=face`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-medium text-foreground text-sm">{study.author}</p>
+                  <p className="text-xs text-muted-foreground">{study.role}</p>
+                </div>
+              </div>
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 text-primary text-sm font-medium mt-6 group-hover:gap-3 transition-all"
+              >
+                Read full case study
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            variant="outline"
+            className="rounded-full px-8 border-2"
+          >
+            View All Case Studies
+            <ChevronRight className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HowItWorksSection() {
   const steps = [
     {
