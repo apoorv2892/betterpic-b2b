@@ -1510,6 +1510,239 @@ function TestimonialsSection() {
     );
 }
 
+function GetQuoteSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    companyName: "",
+    teamSize: "",
+    projectType: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  if (submitted) {
+    return (
+      <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-900">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 className="w-10 h-10 text-primary" />
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-4">Thank you!</h2>
+          <p className="text-slate-400 text-lg">
+            We&apos;ve received your request and will get back to you within 24 hours with a tailored quote.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Get a Quote
+            </h2>
+            <p className="text-lg text-slate-400 mb-8">
+              Tell us about your team and we&apos;ll create a custom quote tailored to your needs. Most quotes delivered within 24 hours.
+            </p>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white">Fast Turnaround</h4>
+                  <p className="text-slate-400 text-sm">Get your headshots delivered in as little as 2 hours</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Users className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white">Teams of Any Size</h4>
+                  <p className="text-slate-400 text-sm">From 5 to 5,000+ team members with volume discounts</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white">Enterprise Security</h4>
+                  <p className="text-slate-400 text-sm">SOC 2 compliant with GDPR-ready data handling</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 lg:p-10">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                    placeholder="John Smith"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    Work Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                    placeholder="john@company.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                    placeholder="+1 (555) 000-0000"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="companyName" className="block text-sm font-medium text-foreground mb-2">
+                    Company Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                    placeholder="Acme Inc."
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="teamSize" className="block text-sm font-medium text-foreground mb-2">
+                    Team Size *
+                  </label>
+                  <select
+                    id="teamSize"
+                    name="teamSize"
+                    value={formData.teamSize}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                  >
+                    <option value="">Select team size</option>
+                    <option value="2-10">2-10 people</option>
+                    <option value="11-25">11-25 people</option>
+                    <option value="26-50">26-50 people</option>
+                    <option value="51-100">51-100 people</option>
+                    <option value="101-250">101-250 people</option>
+                    <option value="251-500">251-500 people</option>
+                    <option value="500+">500+ people</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="projectType" className="block text-sm font-medium text-foreground mb-2">
+                    Project Type *
+                  </label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                  >
+                    <option value="">Select project type</option>
+                    <option value="team-headshots">Team Headshots</option>
+                    <option value="executive-portraits">Executive Portraits</option>
+                    <option value="linkedin-photos">LinkedIn Photos</option>
+                    <option value="company-directory">Company Directory</option>
+                    <option value="marketing-materials">Marketing Materials</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  Tell us about your project
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+                  placeholder="Any specific requirements, timeline, or questions..."
+                />
+              </div>
+
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full h-14 text-lg"
+              >
+                Get Your Quote
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+
+              <p className="text-xs text-center text-muted-foreground">
+                By submitting, you agree to our{" "}
+                <a href="#" className="text-primary hover:underline">Privacy Policy</a>
+                {" "}and{" "}
+                <a href="#" className="text-primary hover:underline">Terms of Service</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FAQSection() {
   const faqs = [
     {
