@@ -553,118 +553,249 @@ function BeforeAfterSection() {
   );
 }
 
+function TrustpilotBadge({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-3 ${className}`}>
+      <div className="flex items-center gap-1">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="w-5 h-5 bg-[#00b67a] flex items-center justify-center">
+            <Star className="w-3 h-3 text-white fill-white" />
+          </div>
+        ))}
+      </div>
+      <div className="text-sm">
+        <span className="font-semibold">4.8</span>
+        <span className="text-muted-foreground"> / 5 on </span>
+        <span className="font-semibold text-[#00b67a]">Trustpilot</span>
+      </div>
+    </div>
+  );
+}
+
+function SOC2Badge({ variant = "default" }: { variant?: "default" | "dark" | "compact" }) {
+  if (variant === "compact") {
+    return (
+      <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full">
+        <Shield className="w-4 h-4 text-primary" />
+        <span className="text-xs font-medium">SOC 2</span>
+      </div>
+    );
+  }
+  
+  if (variant === "dark") {
+    return (
+      <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl">
+        <Shield className="w-5 h-5 text-primary" />
+        <div>
+          <p className="text-white text-sm font-medium">SOC 2 Type II</p>
+          <p className="text-white/60 text-xs">Certified</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-xl border border-border">
+      <Shield className="w-5 h-5 text-primary" />
+      <div>
+        <p className="text-foreground text-sm font-medium">SOC 2 Type II</p>
+        <p className="text-muted-foreground text-xs">Certified</p>
+      </div>
+    </div>
+  );
+}
+
 function CaseStudiesSection() {
   const caseStudies = [
     {
-      company: "TechCorp",
-      industry: "Technology",
-      employees: "500+",
-      result: "Reduced headshot costs by 80%",
-      quote: "BetterPic transformed how we handle employee photos. What used to take weeks now takes hours.",
-      author: "Sarah Chen",
-      role: "VP of People Operations",
+      company: "BetterHealth Group",
+      date: "March 14, 2025",
+      readTime: "4 min read",
+      image: "1576091160399-112ba8d25d1d",
+      challenge: "Inconsistent headshots across 12 states",
+      solution: "AI-generated consistent headshots for 450+ healthcare professionals",
+      results: [
+        "100% brand consistency achieved",
+        "Completed in 48 hours vs 3 months",
+        "85% cost reduction",
+      ],
+      quote: "BetterPic solved what we thought was impossible - getting consistent, professional headshots for our entire distributed team.",
+      author: "Manali Shah",
+      role: "Social Media Manager",
       avatar: "1494790108377-be9c29b29330",
-      logo: "T",
-      color: "bg-blue-500",
     },
     {
-      company: "GlobalFinance",
-      industry: "Financial Services",
-      employees: "2,000+",
-      result: "100% brand consistency achieved",
-      quote: "Every employee now has a professional headshot that matches our brand guidelines perfectly.",
-      author: "James Wilson",
-      role: "Chief Marketing Officer",
+      company: "Elucient Dental",
+      date: "March 13, 2025",
+      readTime: "4 min read",
+      image: "1629909613654-28e377c37b09",
+      challenge: "No consistency with different photographers",
+      solution: "Unified professional look for leadership and staff",
+      results: [
+        "LinkedIn profiles updated company-wide",
+        "Website team page transformed",
+        "New hire onboarding streamlined",
+      ],
+      quote: "Other AI tools weren't good enough for professional use. BetterPic delivered studio-quality results that exceeded our expectations.",
+      author: "John Marcinuk",
+      role: "CEO",
       avatar: "1472099645785-5658abf4ff4e",
-      logo: "G",
-      color: "bg-emerald-500",
     },
     {
-      company: "HealthFirst",
-      industry: "Healthcare",
-      employees: "1,200+",
-      result: "Saved 3 months of coordination",
-      quote: "With staff across 50 locations, traditional photography was impossible. BetterPic made it seamless.",
-      author: "Dr. Emily Rodriguez",
-      role: "Director of HR",
+      company: "WYN Technologies",
+      date: "February 28, 2025",
+      readTime: "3 min read",
+      image: "1497366216548-37526070297c",
+      challenge: "Remote team across 8 countries needed unified look",
+      solution: "Coordinated AI headshot campaign for global team",
+      results: [
+        "200+ team members photographed",
+        "Zero travel required",
+        "Completed in one week",
+      ],
+      quote: "Flying everyone to one location was impossible. BetterPic gave us the consistency of an in-person shoot without anyone leaving their home.",
+      author: "Rachel Torres",
+      role: "VP of People",
       avatar: "1573497019940-1c28c88b4f3e",
-      logo: "H",
-      color: "bg-rose-500",
     },
   ];
 
   return (
-    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Case Studies</p>
+        <div className="text-center mb-6">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Success Stories from Leading Companies
+            Discover why businesses choose BetterPic for effortless team headshots and guaranteed satisfaction.
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See how organizations are transforming their team photos with AI
-          </p>
         </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-6 mb-16">
+          <TrustpilotBadge />
+          <div className="h-6 w-px bg-border" />
+          <SOC2Badge variant="compact" />
+          <div className="h-6 w-px bg-border" />
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <BadgeCheck className="w-4 h-4 text-primary" />
+            <span>GDPR Compliant</span>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8">
           {caseStudies.map((study, index) => (
-            <div
+            <article
               key={index}
-              className="bg-white rounded-3xl p-8 border border-border hover:shadow-xl transition-all duration-300 group"
+              className="bg-white rounded-3xl overflow-hidden border border-border hover:shadow-2xl transition-all duration-300 group"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`w-12 h-12 ${study.color} rounded-xl flex items-center justify-center text-white font-bold text-xl`}>
-                  {study.logo}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">{study.company}</h3>
-                  <p className="text-sm text-muted-foreground">{study.industry}</p>
-                </div>
-              </div>
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Employees</span>
-                  <span className="font-medium text-foreground">{study.employees}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Result</span>
-                  <span className="font-medium text-primary">{study.result}</span>
-                </div>
-              </div>
-              <p className="text-muted-foreground mb-6 italic">
-                &ldquo;{study.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-border">
+              <div className="aspect-[16/10] relative overflow-hidden">
                 <Image
-                  src={`https://images.unsplash.com/photo-${study.avatar}?w=40&h=40&fit=crop&crop=face`}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 rounded-full object-cover"
+                  src={`https://images.unsplash.com/photo-${study.image}?w=600&h=375&fit=crop`}
+                  alt={study.company}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div>
-                  <p className="font-medium text-foreground text-sm">{study.author}</p>
-                  <p className="text-xs text-muted-foreground">{study.role}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
+                    Case Study
+                  </span>
                 </div>
               </div>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-primary text-sm font-medium mt-6 group-hover:gap-3 transition-all"
-              >
-                Read full case study
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                  <span>{study.date}</span>
+                  <span>·</span>
+                  <span>{study.readTime}</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  BetterPic x {study.company}
+                </h3>
+                
+                <p className="text-sm text-muted-foreground mb-4">
+                  {study.challenge}
+                </p>
+
+                <div className="space-y-2 mb-4">
+                  {study.results.map((result, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground">{result}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <blockquote className="border-l-2 border-primary pl-4 italic text-sm text-muted-foreground mb-6">
+                  &ldquo;{study.quote}&rdquo;
+                </blockquote>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-border">
+                  <Image
+                    src={`https://images.unsplash.com/photo-${study.avatar}?w=40&h=40&fit=crop&crop=face`}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground text-sm">{study.author}</p>
+                    <p className="text-xs text-muted-foreground">{study.role}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="px-6 pb-6">
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center w-full gap-2 bg-slate-100 hover:bg-slate-200 text-foreground font-medium py-3 rounded-xl transition-colors"
+                >
+                  Read case study
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </article>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            variant="outline"
-            className="rounded-full px-8 border-2"
-          >
-            View All Case Studies
-            <ChevronRight className="ml-2 w-5 h-5" />
-          </Button>
+
+        <div className="mt-16 bg-slate-900 rounded-3xl p-8 lg:p-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+                Join 10,000+ companies who trust BetterPic
+              </h3>
+              <p className="text-slate-400 mb-6">
+                From startups to Fortune 500 companies, teams trust us for professional, consistent headshots.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <SOC2Badge variant="dark" />
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl">
+                  <BadgeCheck className="w-5 h-5 text-[#00b67a]" />
+                  <div>
+                    <p className="text-white text-sm font-medium">GDPR Ready</p>
+                    <p className="text-white/60 text-xs">Compliant</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center lg:items-end gap-4">
+              <div className="flex items-center gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-8 h-8 bg-[#00b67a] flex items-center justify-center">
+                    <Star className="w-5 h-5 text-white fill-white" />
+                  </div>
+                ))}
+              </div>
+              <p className="text-white text-lg font-semibold">4.8 out of 5 on Trustpilot</p>
+              <p className="text-slate-400 text-sm">Based on 2,947 reviews</p>
+              <Button
+                size="lg"
+                className="bg-white text-slate-900 hover:bg-white/90 rounded-full px-8 mt-4"
+              >
+                Get Started Today
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
