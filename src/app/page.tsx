@@ -1497,7 +1497,7 @@ function TestimonialsSection() {
               href="#" 
               className="inline-flex items-center gap-2 text-[#00b67a] font-medium hover:underline"
             >
-              See all 2,947 reviews on Trustpilot
+              See all 1,000+ reviews on Trustpilot
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
