@@ -439,14 +439,14 @@ function TeamShowcaseSection() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-12">
           {categoryImages[activeCategory].map((id, i) => (
             <div
               key={`${activeCategory}-${i}`}
               className="rounded-2xl overflow-hidden aspect-[3/4] relative group shadow-md hover:shadow-xl transition-all duration-300"
             >
               <Image
-                src={`https://images.unsplash.com/photo-${id}?w=400&h=534&fit=crop&crop=face`}
+                src={`https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop&crop=face`}
                 alt=""
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
