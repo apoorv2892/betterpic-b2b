@@ -379,7 +379,7 @@ function TeamShowcaseSection() {
       "1560250097-0b93528c311a",
       "1573496359142-b8d87734a5a2",
     ],
-    "doctors": [
+    "healthcare": [
       "1612349317150-e413f6a5b16d",
       "1559839734-2b71ea197ec2",
       "1582750433449-648ed127bb54",
