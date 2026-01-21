@@ -1446,10 +1446,10 @@ function TestimonialsSection() {
                   </div>
                 ))}
               </div>
-              <span className="text-lg font-semibold">4.8 out of 5</span>
+              <span className="text-lg font-semibold">4.7 out of 5</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Trusted by 2,947+ Happy Customers
+              Trusted by 1,000+ Happy Customers
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               See what HR and People Ops leaders say about transforming their team photos
