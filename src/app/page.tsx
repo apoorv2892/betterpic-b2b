@@ -1245,6 +1245,7 @@ export default function Home() {
         <HeroSection />
         <StatsSection />
         <LogosSection />
+        <TeamShowcaseSection />
         <BeforeAfterSection />
         <HowItWorksSection />
         <UseCasesSection />
