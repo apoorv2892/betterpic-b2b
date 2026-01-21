@@ -136,10 +136,10 @@ function HeroSection() {
               AI-Powered Corporate Headshots
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Professional Corporate Headshots for Your Team
+              Your Team Headshots, Portrayed With Purpose
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
-              Get studio-quality AI headshots for your entire organization. Perfect for company directories, LinkedIn profiles, and professional branding.
+              Get studio-quality AI headshots for your entire organization. Trusted by Healthcare, Legal & Real Estate teams
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
