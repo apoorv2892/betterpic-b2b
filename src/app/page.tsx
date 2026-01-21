@@ -139,7 +139,7 @@ function HeroSection() {
               Your Team Headshots, <span className="text-primary">Portrayed With Purpose</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
-              Get studio-quality AI headshots for your entire organization. Trusted by Healthcare, Legal & Real Estate teams
+              Get studio-quality AI headshots for your entire organization. Trusted by Healthcare, Legal & Real Estate teams <CheckCircle2 className="inline w-5 h-5 text-primary" />
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
