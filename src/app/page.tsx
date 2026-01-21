@@ -1648,21 +1648,29 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2026 BetterPic. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Shield className="w-4 h-4" />
-              SOC 2 Certified
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <BadgeCheck className="w-4 h-4" />
-              GDPR Compliant
+          <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
+              © 2026 BetterPic. All rights reserved.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <div className="flex items-center gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-4 h-4 bg-[#00b67a] flex items-center justify-center">
+                    <Star className="w-2.5 h-2.5 text-white fill-white" />
+                  </div>
+                ))}
+                <span className="text-sm text-muted-foreground ml-1">4.8 on Trustpilot</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Shield className="w-4 h-4" />
+                SOC 2 Certified
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <BadgeCheck className="w-4 h-4" />
+                GDPR Compliant
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </footer>
   );
