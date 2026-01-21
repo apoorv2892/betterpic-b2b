@@ -901,37 +901,41 @@ function BenefitsSection() {
 }
 
 function PricingSection() {
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("annual");
+  
   const plans = [
     {
-      name: "Starter",
-      description: "Perfect for small teams",
-      price: "29",
-      per: "per person",
+      name: "Individual",
+      description: "Perfect for trying out AI headshots",
+      monthlyPrice: "29",
+      annualPrice: "29",
+      oneTime: true,
       features: [
-        "5-20 team members",
-        "40+ AI headshots per person",
-        "3 background options",
-        "HD resolution downloads",
-        "48-hour delivery",
-        "Basic retouching",
+        "1 person",
+        "40+ AI headshots",
+        "4K resolution",
+        "10 backgrounds",
+        "Delivered in 2 hours",
+        "Commercial license",
       ],
       cta: "Get Started",
       popular: false,
     },
     {
-      name: "Professional",
-      description: "Best for growing companies",
-      price: "19",
-      per: "per person",
+      name: "Team",
+      description: "Best value for small teams",
+      monthlyPrice: "25",
+      annualPrice: "19",
+      perPerson: true,
       features: [
-        "21-100 team members",
-        "80+ AI headshots per person",
-        "10 background options",
-        "4K resolution downloads",
-        "24-hour delivery",
-        "Advanced retouching",
-        "Brand color backgrounds",
-        "Dedicated support",
+        "5-50 team members",
+        "120+ AI headshots per person",
+        "4K resolution",
+        "25 backgrounds",
+        "Brand colors & custom backgrounds",
+        "Team admin dashboard",
+        "Priority support",
+        "Bulk download",
       ],
       cta: "Get a Quote",
       popular: true,
@@ -939,18 +943,18 @@ function PricingSection() {
     {
       name: "Enterprise",
       description: "For large organizations",
-      price: "Custom",
-      per: "",
+      monthlyPrice: "Custom",
+      annualPrice: "Custom",
       features: [
-        "100+ team members",
+        "50+ team members",
         "Unlimited AI headshots",
-        "Custom backgrounds",
         "4K+ resolution",
-        "Priority delivery",
-        "Premium retouching",
-        "SSO integration",
-        "API access",
+        "Unlimited backgrounds",
+        "Custom brand guidelines",
+        "SSO & API access",
         "Dedicated account manager",
+        "SLA guarantee",
+        "Invoice billing",
       ],
       cta: "Contact Sales",
       popular: false,
@@ -958,68 +962,140 @@ function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Pricing</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Simple, Transparent Pricing
+            Invest in Your Team&apos;s Professional Image
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that fits your team size. No hidden fees.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            Save up to 90% compared to traditional photography. No hidden fees.
           </p>
+          <div className="inline-flex items-center gap-2 bg-slate-100 rounded-full p-1">
+            <button
+              onClick={() => setBillingPeriod("monthly")}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                billingPeriod === "monthly"
+                  ? "bg-white text-foreground shadow-sm"
+                  : "text-muted-foreground"
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingPeriod("annual")}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                billingPeriod === "annual"
+                  ? "bg-white text-foreground shadow-sm"
+                  : "text-muted-foreground"
+              }`}
+            >
+              Annual
+              <span className="ml-2 text-xs text-primary font-semibold">Save 24%</span>
+            </button>
+          </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={index}
               className={`relative bg-white rounded-3xl p-8 border ${
                 plan.popular
-                  ? "border-primary shadow-xl scale-105"
+                  ? "border-primary shadow-xl ring-2 ring-primary/20"
                   : "border-border"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-primary text-white text-sm font-medium px-4 py-1 rounded-full">
+                  <span className="bg-primary text-white text-sm font-medium px-4 py-1.5 rounded-full shadow-lg">
                     Most Popular
                   </span>
                 </div>
               )}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-foreground mb-2">
                   {plan.name}
                 </h3>
                 <p className="text-muted-foreground text-sm">{plan.description}</p>
               </div>
-              <div className="text-center mb-6">
-                <span className="text-4xl font-bold text-foreground">
-                  {plan.price === "Custom" ? "" : "$"}
-                  {plan.price}
-                </span>
-                {plan.per && (
-                  <span className="text-muted-foreground ml-2">{plan.per}</span>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  {plan.monthlyPrice !== "Custom" && (
+                    <span className="text-lg text-muted-foreground">$</span>
+                  )}
+                  <span className="text-5xl font-bold text-foreground">
+                    {billingPeriod === "annual" ? plan.annualPrice : plan.monthlyPrice}
+                  </span>
+                  {plan.monthlyPrice !== "Custom" && (
+                    <span className="text-muted-foreground ml-1">
+                      {plan.oneTime ? "one-time" : plan.perPerson ? "/person" : "/mo"}
+                    </span>
+                  )}
+                </div>
+                {plan.perPerson && billingPeriod === "annual" && (
+                  <p className="text-sm text-primary mt-1">Billed annually</p>
                 )}
               </div>
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
               <Button
-                className={`w-full rounded-full ${
+                className={`w-full rounded-full h-12 ${
                   plan.popular
                     ? "bg-primary hover:bg-primary/90 text-white"
-                    : "bg-slate-100 hover:bg-slate-200 text-foreground"
+                    : "bg-slate-900 hover:bg-slate-800 text-white"
                 }`}
               >
                 {plan.cta}
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
           ))}
+        </div>
+        <div className="mt-16 bg-slate-900 rounded-3xl p-8 lg:p-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+                Not sure which plan is right for you?
+              </h3>
+              <p className="text-slate-400 mb-6">
+                Our team will help you find the perfect solution for your organization. Get a personalized quote in minutes.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
+                  Get a Custom Quote
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+                <Button variant="outline" className="border-slate-600 text-white hover:bg-slate-800 rounded-full px-8">
+                  Schedule a Demo
+                </Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-slate-800 rounded-2xl p-6">
+                <p className="text-3xl font-bold text-white mb-1">90%</p>
+                <p className="text-slate-400 text-sm">Cost savings vs traditional photography</p>
+              </div>
+              <div className="bg-slate-800 rounded-2xl p-6">
+                <p className="text-3xl font-bold text-white mb-1">2hrs</p>
+                <p className="text-slate-400 text-sm">Average delivery time</p>
+              </div>
+              <div className="bg-slate-800 rounded-2xl p-6">
+                <p className="text-3xl font-bold text-white mb-1">100%</p>
+                <p className="text-slate-400 text-sm">Satisfaction guarantee</p>
+              </div>
+              <div className="bg-slate-800 rounded-2xl p-6">
+                <p className="text-3xl font-bold text-white mb-1">24/7</p>
+                <p className="text-slate-400 text-sm">Priority support</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
