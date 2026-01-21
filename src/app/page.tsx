@@ -348,7 +348,7 @@ function LogosSection() {
 }
 
 function TeamShowcaseSection() {
-  const [activeCategory, setActiveCategory] = useState("real-estate");
+  const [activeCategory, setActiveCategory] = useState("lawyers");
   
   const categories = [
     { id: "lawyers", label: "Lawyers" },
