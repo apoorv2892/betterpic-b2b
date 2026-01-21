@@ -290,6 +290,128 @@ function LogosSection() {
   );
 }
 
+function TeamShowcaseSection() {
+  const [activeCategory, setActiveCategory] = useState("real-estate");
+  
+  const categories = [
+    { id: "real-estate", label: "Real Estate" },
+    { id: "professionals", label: "Professionals" },
+    { id: "doctors", label: "Doctors" },
+    { id: "lawyers", label: "Lawyers" },
+    { id: "executives", label: "Executives" },
+  ];
+
+  const categoryImages: Record<string, string[]> = {
+    "real-estate": [
+      "1560250097-0b93528c311a",
+      "1573496359142-b8d87734a5a2",
+      "1472099645785-5658abf4ff4e",
+      "1580489944761-15a19d654956",
+      "1519345182560-3f2917c472ef",
+      "1534528741775-53994a69daeb",
+      "1507003211169-0a1dd7228f2d",
+      "1438761681033-6461ffad8d80",
+    ],
+    "professionals": [
+      "1507003211169-0a1dd7228f2d",
+      "1494790108377-be9c29b29330",
+      "1500648767791-00dcc994a43e",
+      "1573497019940-1c28c88b4f3e",
+      "1544005313-94ddf0286df2",
+      "1506794778202-cad84cf45f1d",
+      "1560250097-0b93528c311a",
+      "1573496359142-b8d87734a5a2",
+    ],
+    "doctors": [
+      "1612349317150-e413f6a5b16d",
+      "1559839734-2b71ea197ec2",
+      "1582750433449-648ed127bb54",
+      "1651008376811-b90baee60c1f",
+      "1594824476967-48c8b964273f",
+      "1576091160399-112ba8d25d1d",
+      "1622253692010-333f2da6031d",
+      "1612349316150-e413f6a5b16d",
+    ],
+    "lawyers": [
+      "1556157382-97eda2d62296",
+      "1573497019940-1c28c88b4f3e",
+      "1519345182560-3f2917c472ef",
+      "1472099645785-5658abf4ff4e",
+      "1507003211169-0a1dd7228f2d",
+      "1500648767791-00dcc994a43e",
+      "1560250097-0b93528c311a",
+      "1438761681033-6461ffad8d80",
+    ],
+    "executives": [
+      "1519345182560-3f2917c472ef",
+      "1534528741775-53994a69daeb",
+      "1472099645785-5658abf4ff4e",
+      "1507003211169-0a1dd7228f2d",
+      "1573496359142-b8d87734a5a2",
+      "1556157382-97eda2d62296",
+      "1494790108377-be9c29b29330",
+      "1580489944761-15a19d654956",
+    ],
+  };
+
+  return (
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            One team. One brand. One seamless headshot solution
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Professional. Consistent. Instantly aligned with your company&apos;s identity.
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCategory === category.id
+                  ? "bg-primary text-white shadow-lg shadow-primary/25"
+                  : "bg-white text-muted-foreground hover:bg-slate-100 border border-border"
+              }`}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-3 mb-12">
+          {categoryImages[activeCategory].map((id, i) => (
+            <div
+              key={`${activeCategory}-${i}`}
+              className="rounded-2xl overflow-hidden aspect-[3/4] relative group shadow-md hover:shadow-xl transition-all duration-300"
+            >
+              <Image
+                src={`https://images.unsplash.com/photo-${id}?w=200&h=267&fit=crop&crop=face`}
+                alt=""
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
+          >
+            Get a Quote
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function BeforeAfterSection() {
   const transformations = [
     {
@@ -313,7 +435,7 @@ function BeforeAfterSection() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
