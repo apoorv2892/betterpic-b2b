@@ -308,14 +308,14 @@ function StatsSection() {
 
 function LogosSection() {
   const logos = [
-    { name: "Compass", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcompass.c4d1f98d.png&w=256&q=75" },
-    { name: "Cushman & Wakefield", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcushman.b5fbfb89.png&w=256&q=75" },
-    { name: "Coldwell Banker", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcoldwell.b0ed4fa2.png&w=256&q=75" },
-    { name: "RE/MAX", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fremax.c71f0ed5.png&w=256&q=75" },
-    { name: "Keller Williams", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fkeller.9dbd2ee9.png&w=256&q=75" },
-    { name: "Century 21", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcentury21.c35b7837.png&w=256&q=75" },
-    { name: "Sotheby's", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsothebys.2e7f0dc3.png&w=256&q=75" },
-    { name: "eXp Realty", src: "https://www.betterpic.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexp.9ed25c70.png&w=256&q=75" },
+    { name: "Compass", src: "https://www.betterpic.io/_next/static/media/compass.c4d1f98d.png" },
+    { name: "Cushman & Wakefield", src: "https://www.betterpic.io/_next/static/media/cushman.b5fbfb89.png" },
+    { name: "Coldwell Banker", src: "https://www.betterpic.io/_next/static/media/coldwell.b0ed4fa2.png" },
+    { name: "RE/MAX", src: "https://www.betterpic.io/_next/static/media/remax.c71f0ed5.png" },
+    { name: "Keller Williams", src: "https://www.betterpic.io/_next/static/media/keller.9dbd2ee9.png" },
+    { name: "Century 21", src: "https://www.betterpic.io/_next/static/media/century21.c35b7837.png" },
+    { name: "Sotheby's", src: "https://www.betterpic.io/_next/static/media/sothebys.2e7f0dc3.png" },
+    { name: "eXp Realty", src: "https://www.betterpic.io/_next/static/media/exp.9ed25c70.png" },
   ];
 
   return (
@@ -334,11 +334,10 @@ function LogosSection() {
                   key={`${logo.name}-${i}`}
                   className="flex-shrink-0 h-12 w-32 relative grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                 >
-                  <Image
+                  <img
                     src={logo.src}
                     alt={logo.name}
-                    fill
-                    className="object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               ))}
@@ -349,11 +348,10 @@ function LogosSection() {
                   key={`${logo.name}-dup-${i}`}
                   className="flex-shrink-0 h-12 w-32 relative grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                 >
-                  <Image
+                  <img
                     src={logo.src}
                     alt={logo.name}
-                    fill
-                    className="object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               ))}
