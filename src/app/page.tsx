@@ -1416,7 +1416,7 @@ function IndustriesSection() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="pt-16 pb-20 lg:pb-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Industries</p>
