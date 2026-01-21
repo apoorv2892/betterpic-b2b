@@ -1074,8 +1074,8 @@ function PricingSection() {
     { text: "120+ AI headshots per person", included: true },
     { text: "4K ultra-high resolution", included: true },
     { text: "Multiple background options", included: true },
-    { text: "Brand color customization", included: teamSize >= 6 },
-    { text: "Team admin dashboard", included: teamSize >= 6 },
+    { text: "Brand color customization", included: true },
+    { text: "Team admin dashboard", included: true },
     { text: "Priority support", included: teamSize >= 11 },
     { text: "Custom backgrounds upload", included: teamSize >= 26 },
     { text: "Dedicated account manager", included: teamSize >= 51 },
@@ -1084,16 +1084,16 @@ function PricingSection() {
     { text: "Custom SLA", included: teamSize >= 251 },
   ];
 
-  const sliderStops = [2, 5, 10, 25, 50, 100, 250, 500];
+  const sliderStops = [2, 10, 25, 50, 100, 250, 500, 1000];
   
   const getSliderValue = (size: number) => {
-    for (let i = 0; i < sliderStops.length; i++) {
+    if (size <= sliderStops[0]) return 0;
+    for (let i = 1; i < sliderStops.length; i++) {
       if (size <= sliderStops[i]) {
-        if (i === 0) return (size / sliderStops[0]) * (100 / sliderStops.length);
         const prevStop = sliderStops[i - 1];
         const currStop = sliderStops[i];
-        const segmentStart = (i / sliderStops.length) * 100;
-        const segmentEnd = ((i + 1) / sliderStops.length) * 100;
+        const segmentStart = ((i - 1) / (sliderStops.length - 1)) * 100;
+        const segmentEnd = (i / (sliderStops.length - 1)) * 100;
         const ratio = (size - prevStop) / (currStop - prevStop);
         return segmentStart + ratio * (segmentEnd - segmentStart);
       }
@@ -1102,19 +1102,15 @@ function PricingSection() {
   };
 
   const getSizeFromSlider = (value: number) => {
-    const segmentSize = 100 / sliderStops.length;
-    const segmentIndex = Math.floor(value / segmentSize);
+    const segmentCount = sliderStops.length - 1;
+    const segmentSize = 100 / segmentCount;
+    const segmentIndex = Math.min(Math.floor(value / segmentSize), segmentCount - 1);
     
-    if (segmentIndex >= sliderStops.length - 1) return sliderStops[sliderStops.length - 1];
-    if (segmentIndex === 0) {
-      return Math.max(2, Math.round((value / segmentSize) * sliderStops[0]));
-    }
-    
-    const prevStop = sliderStops[segmentIndex - 1] || 2;
-    const currStop = sliderStops[segmentIndex];
+    const prevStop = sliderStops[segmentIndex];
+    const currStop = sliderStops[segmentIndex + 1];
     const segmentStart = segmentIndex * segmentSize;
     const ratio = (value - segmentStart) / segmentSize;
-    return Math.round(prevStop + ratio * (currStop - prevStop));
+    return Math.max(2, Math.min(1000, Math.round(prevStop + ratio * (currStop - prevStop))));
   };
 
   return (
