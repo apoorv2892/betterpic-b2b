@@ -1048,16 +1048,16 @@ function BenefitsSection() {
 }
 
 function PricingSection() {
-  const [teamSize, setTeamSize] = useState(25);
+  const [teamSize, setTeamSize] = useState(2);
   
   const pricingTiers = [
-    { min: 2, max: 5, pricePerPerson: 39, name: "Starter" },
-    { min: 6, max: 10, pricePerPerson: 35, name: "Small Team" },
-    { min: 11, max: 25, pricePerPerson: 29, name: "Growing Team" },
-    { min: 26, max: 50, pricePerPerson: 25, name: "Medium Team" },
-    { min: 51, max: 100, pricePerPerson: 21, name: "Large Team" },
-    { min: 101, max: 250, pricePerPerson: 17, name: "Enterprise" },
-    { min: 251, max: 500, pricePerPerson: 14, name: "Enterprise Plus" },
+    { min: 2, max: 10, pricePerPerson: 49, name: "Starter" },
+    { min: 11, max: 25, pricePerPerson: 39, name: "Small Team" },
+    { min: 26, max: 50, pricePerPerson: 32, name: "Growing Team" },
+    { min: 51, max: 100, pricePerPerson: 27, name: "Medium Team" },
+    { min: 101, max: 250, pricePerPerson: 22, name: "Large Team" },
+    { min: 251, max: 500, pricePerPerson: 17, name: "Enterprise" },
+    { min: 501, max: 1000, pricePerPerson: 13, name: "Enterprise Plus" },
   ];
 
   const getCurrentTier = () => {
