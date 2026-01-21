@@ -681,7 +681,7 @@ function CaseStudiesSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Discover why businesses choose BetterPic for effortless team headshots and guaranteed satisfaction.
+            The Stories Behind Teams Who Chose BetterPic
           </h2>
         </div>
 
