@@ -133,7 +133,7 @@ function HeroSection() {
           <div className="space-y-6 lg:space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium">
               <Sparkles className="w-4 h-4" />
-              AI-Powered Corporate Headshots
+              AI Corporate Headshots - Built for Scale
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Your Team Headshots, <span className="text-primary">Portrayed With Purpose</span>
