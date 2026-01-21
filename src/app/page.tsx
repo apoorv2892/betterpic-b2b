@@ -154,40 +154,29 @@ function HeroSection() {
                 View Samples
               </Button>
             </div>
-            <div className="flex items-center gap-6 pt-4">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden"
-                  >
-                    <Image
-                      src={`https://images.unsplash.com/photo-${
-                        [
-                          "1494790108377-be9c29b29330",
-                          "1507003211169-0a1dd7228f2d",
-                          "1573497019940-1c28c88b4f3e",
-                          "1500648767791-00dcc994a43e",
-                          "1438761681033-6461ffad8d80",
-                        ][i - 1]
-                      }?w=80&h=80&fit=crop&crop=face`}
-                      alt=""
-                      width={40}
-                      height={40}
-                      className="w-full h-full object-cover"
-                    />
+            <div className="flex flex-wrap items-center gap-6 pt-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-5 h-5 bg-[#00b67a] flex items-center justify-center">
+                        <Star className="w-3 h-3 text-white fill-white" />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="text-sm">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
+                  <div className="text-sm">
+                    <span className="font-semibold">4.8</span>
+                    <span className="text-muted-foreground"> on </span>
+                    <span className="font-semibold text-[#00b67a]">Trustpilot</span>
+                  </div>
                 </div>
-                <span className="text-muted-foreground">Trusted by 10,000+ companies</span>
+                <div className="h-6 w-px bg-border hidden sm:block" />
+                <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full">
+                  <Shield className="w-4 h-4 text-primary" />
+                  <span className="text-xs font-medium">SOC 2 Certified</span>
+                </div>
+                <div className="h-6 w-px bg-border hidden sm:block" />
+                <span className="text-sm text-muted-foreground">10,000+ companies</span>
               </div>
-            </div>
           </div>
           <div className="relative">
             <div className="grid grid-cols-3 gap-3">
