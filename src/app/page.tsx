@@ -136,7 +136,7 @@ function HeroSection() {
               AI-Powered Corporate Headshots
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Your Team Headshots, Portrayed With Purpose
+              Your Team Headshots, <span className="text-primary">Portrayed With Purpose</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
               Get studio-quality AI headshots for your entire organization. Trusted by Healthcare, Legal & Real Estate teams
