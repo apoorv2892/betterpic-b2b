@@ -1978,6 +1978,7 @@ export default function Home() {
         <GallerySection />
         <IndustriesSection />
         <TestimonialsSection />
+        <GetQuoteSection />
         <FAQSection />
         <CTASection />
       </main>
