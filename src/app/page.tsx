@@ -351,10 +351,10 @@ function TeamShowcaseSection() {
   const [activeCategory, setActiveCategory] = useState("real-estate");
   
   const categories = [
+    { id: "lawyers", label: "Lawyers" },
+    { id: "healthcare", label: "Healthcare" },
     { id: "real-estate", label: "Real Estate" },
     { id: "professionals", label: "Professionals" },
-    { id: "doctors", label: "Doctors" },
-    { id: "lawyers", label: "Lawyers" },
     { id: "executives", label: "Executives" },
   ];
 
