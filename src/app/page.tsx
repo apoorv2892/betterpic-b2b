@@ -801,8 +801,8 @@ function CaseStudiesSection() {
                   </div>
                 ))}
               </div>
-              <p className="text-white text-lg font-semibold">4.8 out of 5 on Trustpilot</p>
-              <p className="text-slate-400 text-sm">Based on 2,947 reviews</p>
+              <p className="text-white text-lg font-semibold">4.7 out of 5 on Trustpilot</p>
+              <p className="text-slate-400 text-sm">Based on 1,000+ reviews</p>
               <Button
                 size="lg"
                 className="bg-white text-slate-900 hover:bg-white/90 rounded-full px-8 mt-4"
