@@ -1938,7 +1938,7 @@ function Footer() {
                     <Star className="w-2.5 h-2.5 text-white fill-white" />
                   </div>
                 ))}
-                <span className="text-sm text-muted-foreground ml-1">4.8 on Trustpilot</span>
+                <span className="text-sm text-muted-foreground ml-1">4.7 on Trustpilot</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Shield className="w-4 h-4" />
