@@ -233,6 +233,63 @@ function HeroSection() {
   );
 }
 
+function ComplianceSection() {
+  const certifications = [
+    {
+      name: "SOC 2 Type II",
+      description: "Certified",
+      image: "1633265486064-086b219458ec",
+    },
+    {
+      name: "GDPR",
+      description: "Compliant",
+      image: "1563013544-824ae1b704d3",
+    },
+    {
+      name: "HIPAA",
+      description: "Ready",
+      image: "1551288049-bebda4e38f71",
+    },
+  ];
+
+  return (
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="text-center lg:text-left">
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Compliant with the highest standards
+            </h3>
+            <p className="text-slate-400 text-sm">
+              Your data is protected by enterprise-grade security
+            </p>
+          </div>
+          <div className="flex items-center gap-6">
+            {certifications.map((cert, index) => (
+              <div key={index} className="flex items-center gap-3 bg-slate-800/50 rounded-xl px-4 py-3">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-white font-medium text-sm">{cert.name}</p>
+                  <p className="text-slate-400 text-xs">{cert.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all"
+          >
+            Visit Trust Center
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function StatsSection() {
   const stats = [
     { value: "50,000+", label: "Headshots Delivered" },
