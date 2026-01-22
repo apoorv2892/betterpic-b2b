@@ -432,7 +432,7 @@ function TeamShowcaseSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            One team. One brand. One seamless headshot solution
+            Multiple teams. One brand. One seamless headshot solution
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Professional. Consistent. Instantly aligned with your company&apos;s identity.
