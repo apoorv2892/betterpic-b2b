@@ -777,7 +777,7 @@ function CaseStudiesSection() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-                Join 10,000+ companies who trust BetterPic
+                Join 100,000+ professionals who trust BetterPic
               </h3>
               <p className="text-slate-400 mb-6">
                 From startups to Fortune 500 companies, teams trust us for professional, consistent headshots.
