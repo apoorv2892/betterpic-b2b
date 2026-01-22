@@ -2023,12 +2023,12 @@ export default function Home() {
         <HeroSection />
         <LogosSection />
         <ComplianceSection />
-        <StatsSection />
         <TeamShowcaseSection />
         <BeforeAfterSection />
         <CaseStudiesSection />
         <IndustriesSection />
         <HowItWorksSection />
+        <StatsSection />
         <UseCasesSection />
         <BenefitsSection />
         <PricingSection />
