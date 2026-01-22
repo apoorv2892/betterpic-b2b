@@ -2021,9 +2021,9 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <LogosSection />
         <ComplianceSection />
         <StatsSection />
-        <LogosSection />
         <TeamShowcaseSection />
         <BeforeAfterSection />
         <CaseStudiesSection />
