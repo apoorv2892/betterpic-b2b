@@ -314,7 +314,7 @@ function LogosSection() {
     { name: "LinkedIn", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Linkedin-logo-1769067549612.jpg?width=8000&height=8000&resize=contain" },
     { name: "Accenture", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Logo_Accenture.svg-1769067549610.png?width=8000&height=8000&resize=contain" },
     { name: "Meta", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Meta-1769067549611.jpg?width=8000&height=8000&resize=contain" },
-    { name: "NVIDIA", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/nvidia-eye-gray-logo-icon-png-701751694965661ifss8h1fot-1769067549616.png?width=8000&height=8000&resize=contain" },
+    { name: "NVIDIA", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Untitled-design-5-1769081218957.png?width=8000&height=8000&resize=contain" },
     { name: "TEDx", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/TEdX-1769067549607.jpg?width=8000&height=8000&resize=contain" },
   ];
 
