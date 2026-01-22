@@ -319,7 +319,7 @@ function LogosSection() {
   ];
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-border/50 bg-white overflow-hidden">
+    <section className="pb-12 px-4 sm:px-6 lg:px-8 border-b border-border/50 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <p className="text-center text-lg font-medium text-foreground mb-8">
           Trusted by teams like:
