@@ -308,14 +308,14 @@ function StatsSection() {
 
 function LogosSection() {
   const logos = [
-    { name: "Compass", src: "https://www.betterpic.io/_next/static/media/compass.c4d1f98d.png" },
-    { name: "Cushman & Wakefield", src: "https://www.betterpic.io/_next/static/media/cushman.b5fbfb89.png" },
-    { name: "Coldwell Banker", src: "https://www.betterpic.io/_next/static/media/coldwell.b0ed4fa2.png" },
-    { name: "RE/MAX", src: "https://www.betterpic.io/_next/static/media/remax.c71f0ed5.png" },
-    { name: "Keller Williams", src: "https://www.betterpic.io/_next/static/media/keller.9dbd2ee9.png" },
-    { name: "Century 21", src: "https://www.betterpic.io/_next/static/media/century21.c35b7837.png" },
-    { name: "Sotheby's", src: "https://www.betterpic.io/_next/static/media/sothebys.2e7f0dc3.png" },
-    { name: "eXp Realty", src: "https://www.betterpic.io/_next/static/media/exp.9ed25c70.png" },
+    { name: "Amazon", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Amazon-1769067549606.jpg?width=8000&height=8000&resize=contain" },
+    { name: "Apple", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/apple-logo-1024x728-1769067549610.png?width=8000&height=8000&resize=contain" },
+    { name: "AWS", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/AWS-Logo-Gray-1769067549609.png?width=8000&height=8000&resize=contain" },
+    { name: "LinkedIn", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Linkedin-logo-1769067549612.jpg?width=8000&height=8000&resize=contain" },
+    { name: "Accenture", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Logo_Accenture.svg-1769067549610.png?width=8000&height=8000&resize=contain" },
+    { name: "Meta", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/Meta-1769067549611.jpg?width=8000&height=8000&resize=contain" },
+    { name: "NVIDIA", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/nvidia-eye-gray-logo-icon-png-701751694965661ifss8h1fot-1769067549616.png?width=8000&height=8000&resize=contain" },
+    { name: "TEDx", src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/TEdX-1769067549607.jpg?width=8000&height=8000&resize=contain" },
   ];
 
   return (
