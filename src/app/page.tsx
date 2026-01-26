@@ -253,8 +253,8 @@ function ComplianceSection() {
       image: "1563013544-824ae1b704d3",
     },
     {
-      name: "HIPAA",
-      description: "Ready",
+      name: "ISO 27001",
+      description: "Certified",
       image: "1551288049-bebda4e38f71",
     },
   ];
