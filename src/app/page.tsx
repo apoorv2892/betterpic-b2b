@@ -518,16 +518,16 @@ function BeforeAfterSection() {
       role: "LinkedIn User",
     },
     {
-      before: "1438761681033-6461ffad8d80",
-      after: "1573496359142-b8d87734a5a2",
-      name: "Sarah Johnson",
-      role: "Marketing Director",
+      before: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-2-1769426557942.jpg?width=300&height=300&resize=cover&quality=75",
+      after: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-3-resized-1769426559030.jpg?width=300&height=300&resize=cover&quality=75",
+      name: "Rebecca",
+      role: "LinkedIn User",
     },
     {
       before: "1500648767791-00dcc994a43e",
       after: "1472099645785-5658abf4ff4e",
       name: "Michael Chen",
-      role: "Product Manager",
+      role: "LinkedIn User",
     },
   ];
 
