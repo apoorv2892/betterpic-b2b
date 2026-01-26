@@ -285,7 +285,9 @@ function ComplianceSection() {
             ))}
           </div>
           <a
-            href="#"
+            href="https://trust.bettergroup.io/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all"
           >
             Visit Trust Center
