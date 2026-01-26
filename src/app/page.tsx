@@ -229,8 +229,8 @@ function HeroSection() {
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">Ready in 2 hours</p>
-                  <p className="text-sm text-muted-foreground">Not weeks</p>
+                  <p className="font-semibold text-foreground">80% Reduction in</p>
+                  <p className="text-sm text-muted-foreground">Cost and Time</p>
                 </div>
               </div>
             </div>
