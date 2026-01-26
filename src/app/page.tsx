@@ -75,14 +75,19 @@ function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" className="text-sm font-medium">
-              Log in
-            </Button>
-            <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-              Get a Quote
-            </Button>
-          </div>
+            <div className="hidden lg:flex items-center gap-4">
+              <Button variant="ghost" className="text-sm font-medium">
+                Log in
+              </Button>
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6"
+                onClick={() => {
+                  document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Get a Quote
+              </Button>
+            </div>
 
           <button
             className="lg:hidden p-2"
@@ -109,14 +114,20 @@ function Header() {
                   {link.name}
                 </a>
               ))}
-              <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button variant="ghost" className="justify-start">
-                  Log in
-                </Button>
-                <Button className="bg-primary hover:bg-primary/90 text-white rounded-full">
-                  Get a Quote
-                </Button>
-              </div>
+                <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
+                  <Button variant="ghost" className="justify-start">
+                    Log in
+                  </Button>
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-white rounded-full"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Get a Quote
+                  </Button>
+                </div>
             </nav>
           </div>
         )}
@@ -141,21 +152,25 @@ function HeroSection() {
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
               Get studio-quality AI headshots for your entire organization. Trusted by Healthcare, Legal & Real Estate teams <CheckCircle2 className="inline w-5 h-5 text-primary" />
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-14 text-lg"
-              >
-                Get a Quote
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full px-8 h-14 text-lg border-2"
-              >
-                View Samples
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-14 text-lg"
+                  onClick={() => {
+                    document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Get a Quote
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-8 h-14 text-lg border-2"
+                  asChild
+                >
+                  <a href="/samples" target="_blank" rel="noopener noreferrer">View Samples</a>
+                </Button>
             </div>
             <div className="flex flex-wrap items-center gap-6 pt-4">
                 <div className="flex items-center gap-3">
@@ -184,13 +199,13 @@ function HeroSection() {
           <div className="relative">
             <div className="grid grid-cols-3 gap-3">
               {[
-                "1560250097-0b93528c311a",
-                "1573496359142-b8d87734a5a2",
-                "1472099645785-5658abf4ff4e",
-                "1580489944761-15a19d654956",
-                "1519345182560-3f2917c472ef",
-                "1534528741775-53994a69daeb",
-              ].map((id, i) => (
+                "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/image-1-1769423031029.jpeg?width=8000&height=8000&resize=contain",
+                "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/image-2-1769423031034.jpeg?width=8000&height=8000&resize=contain",
+                "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/image-3-1769423031617.jpeg?width=8000&height=8000&resize=contain",
+                "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/image-4-1769423031232.jpeg?width=8000&height=8000&resize=contain",
+                "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/image-1769423031093.jpeg?width=8000&height=8000&resize=contain",
+                "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/03-1769423031033.jpg?width=8000&height=8000&resize=contain",
+              ].map((url, i) => (
                 <div
                   key={i}
                   className={`rounded-2xl overflow-hidden shadow-lg ${
@@ -198,7 +213,7 @@ function HeroSection() {
                   }`}
                 >
                   <Image
-                    src={`https://images.unsplash.com/photo-${id}?w=200&h=250&fit=crop&crop=face`}
+                    src={url}
                     alt=""
                     width={200}
                     height={250}
@@ -319,7 +334,7 @@ function LogosSection() {
   ];
 
   return (
-    <section className="pb-12 px-4 sm:px-6 lg:px-8 border-b border-border/50 bg-white overflow-hidden">
+    <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8 border-b border-border/50 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <p className="text-center text-lg font-medium text-foreground mb-8">
           Trusted by teams like:
@@ -374,47 +389,47 @@ function TeamShowcaseSection() {
     { id: "executives", label: "Executives" },
   ];
 
-  const categoryImages: Record<string, string[]> = {
-    "real-estate": [
-      "1560250097-0b93528c311a",
-      "1573496359142-b8d87734a5a2",
-      "1472099645785-5658abf4ff4e",
-      "1580489944761-15a19d654956",
-      "1519345182560-3f2917c472ef",
-      "1534528741775-53994a69daeb",
-      "1507003211169-0a1dd7228f2d",
-      "1438761681033-6461ffad8d80",
-    ],
+    const categoryImages: Record<string, string[]> = {
+      "real-estate": [
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/fred_real_estate_n2-1769162091358.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ricardo_real_estate_n4-1769162091427.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/hertok_real_estate_n4-1769162091363.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/apoorv_real_estate_n3-1769162091432.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/allison_real_estate_n3-1769162163845.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/carla_real_estate_n4-1769162163847.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/fedor_real_estate_n4-1769162163850.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/miriam_real_estate_n3-1769162163884.jpg?width=8000&height=8000&resize=contain",
+      ],
     "professionals": [
-      "1507003211169-0a1dd7228f2d",
-      "1494790108377-be9c29b29330",
-      "1500648767791-00dcc994a43e",
-      "1573497019940-1c28c88b4f3e",
-      "1544005313-94ddf0286df2",
-      "1506794778202-cad84cf45f1d",
-      "1560250097-0b93528c311a",
-      "1573496359142-b8d87734a5a2",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/03-1769166629916.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/pro4-1769166629915.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/pro5-1769166629920.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/pro6-1769166629952.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/pro7-1769166629955.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/pro8-1769166629917.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/pro9-1769166629976.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/thibaut_real_estate_n5-1769166629975.jpg?width=8000&height=8000&resize=contain",
     ],
     "healthcare": [
-      "1612349317150-e413f6a5b16d",
-      "1559839734-2b71ea197ec2",
-      "1582750433449-648ed127bb54",
-      "1651008376811-b90baee60c1f",
-      "1594824476967-48c8b964273f",
-      "1576091160399-112ba8d25d1d",
-      "1622253692010-333f2da6031d",
-      "1537368910025-700350fe46c7",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/Healthcare-2-1769164976244.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/healthcare_04-1769164976606.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/healthcare_1-1769164976246.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/healtcare-07-1769164976243.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/carla_doctor_n1-1769165081559.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/fedor_doctor_n3-1769165081553.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/johanna_doctor_n4-1769165234576.jpg?width=8000&height=8000&resize=contain",
+      "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/fred_doctor_n2-1769165245662.jpg?width=8000&height=8000&resize=contain",
     ],
-    "lawyers": [
-      "1556157382-97eda2d62296",
-      "1573497019940-1c28c88b4f3e",
-      "1519345182560-3f2917c472ef",
-      "1472099645785-5658abf4ff4e",
-      "1507003211169-0a1dd7228f2d",
-      "1500648767791-00dcc994a43e",
-      "1560250097-0b93528c311a",
-      "1438761681033-6461ffad8d80",
-    ],
+      "lawyers": [
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/allison_law_n3-1769161562224.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/carla_law_n4-1769161562233.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/fred_law_n3-1769161562346.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ricardo_law_n1-1769161562237.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/apoorv_law_n3-1769161609838.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/fedor_law_n1-1769161609835.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/khoung_law_n1-1769161609839.jpg?width=8000&height=8000&resize=contain",
+        "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/thibaut_law_n3-1769161609836.jpg?width=8000&height=8000&resize=contain",
+      ],
     "executives": [
       "1519345182560-3f2917c472ef",
       "1534528741775-53994a69daeb",
@@ -455,31 +470,37 @@ function TeamShowcaseSection() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-10">
-          {categoryImages[activeCategory].map((id, i) => (
-            <div
-              key={`${activeCategory}-${i}`}
-              className="rounded-2xl overflow-hidden aspect-[3/4] relative group shadow-md hover:shadow-xl transition-all duration-300"
-            >
-              <Image
-                src={`https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop&crop=face`}
-                alt=""
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          ))}
-        </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-10">
+            {categoryImages[activeCategory].map((id, i) => {
+              const isFullUrl = id.startsWith('http');
+              return (
+                <div
+                  key={`${activeCategory}-${i}`}
+                  className="rounded-2xl overflow-hidden aspect-[3/4] relative group shadow-md hover:shadow-xl transition-all duration-300"
+                >
+                  <Image
+                    src={isFullUrl ? id : `https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop&crop=face`}
+                    alt=""
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              );
+            })}
+          </div>
 
-        <div className="text-center">
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
-          >
-            Get a Quote
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-        </div>
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
+              onClick={() => {
+                document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Get a Quote
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </div>
       </div>
     </section>
   );
@@ -555,15 +576,18 @@ function BeforeAfterSection() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
-          >
-            View More Examples
-            <ChevronRight className="ml-2 w-5 h-5" />
-          </Button>
-        </div>
+            <div className="text-center mt-12">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
+                asChild
+              >
+                <a href="/samples" target="_blank" rel="noopener noreferrer">
+                  View More Examples
+                  <ChevronRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
+            </div>
       </div>
     </section>
   );
@@ -762,7 +786,15 @@ function CaseStudiesSection() {
               
               <div className="px-6 pb-6">
                 <a
-                  href="#"
+                  href={
+                    study.company === "BetterHealth Group" 
+                      ? "https://www.betterpic.io/case-studies/betterhealth-group"
+                      : study.company === "Elucient Dental"
+                      ? "https://www.betterpic.io/case-studies/elucient-betterpic"
+                      : "https://www.betterpic.io/case-studies/wyn-solutions"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-full gap-2 bg-slate-100 hover:bg-slate-200 text-foreground font-medium py-3 rounded-xl transition-colors"
                 >
                   Read case study
@@ -803,13 +835,16 @@ function CaseStudiesSection() {
               </div>
               <p className="text-white text-lg font-semibold">4.7 out of 5 on Trustpilot</p>
               <p className="text-slate-400 text-sm">Based on 1,000+ reviews</p>
-              <Button
-                size="lg"
-                className="bg-white text-slate-900 hover:bg-white/90 rounded-full px-8 mt-4"
-              >
-                Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-white text-slate-900 hover:bg-white/90 rounded-full px-8 mt-4"
+                  onClick={() => {
+                    document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Get Started Today
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
             </div>
           </div>
         </div>
@@ -883,15 +918,18 @@ function HowItWorksSection() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
-          >
-            Get Started Now
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-        </div>
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
+              onClick={() => {
+                document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Get Started Now
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </div>
       </div>
     </section>
   );
@@ -1225,22 +1263,28 @@ function PricingSection() {
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="flex-1 bg-primary hover:bg-primary/90 text-white rounded-full h-14 text-lg"
-                >
-                  Get Started - ${totalPrice.toLocaleString()}
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full h-14 text-lg border-2 px-8"
-                >
-                  Book a Demo
-                </Button>
-              </div>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    className="flex-1 bg-primary hover:bg-primary/90 text-white rounded-full h-14 text-lg"
+                    onClick={() => {
+                      document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Get Started - ${totalPrice.toLocaleString()}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full h-14 text-lg border-2 px-8"
+                    onClick={() => {
+                      document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Book a Demo
+                  </Button>
+                </div>
             </div>
 
             <div className="bg-slate-50 px-8 lg:px-12 py-6 border-t border-border">
@@ -1265,13 +1309,19 @@ function PricingSection() {
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-4">Need more than 1000 team members?</p>
-            <Button variant="outline" className="rounded-full px-8 border-2">
-              Contact Sales for Enterprise Pricing
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </div>
+            <div className="mt-12 text-center">
+              <p className="text-muted-foreground mb-4">Need more than 1000 team members?</p>
+              <Button 
+                variant="outline" 
+                className="rounded-full px-8 border-2"
+                onClick={() => {
+                  document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Contact Sales for Enterprise Pricing
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </div>
         </div>
       </div>
 
@@ -1348,16 +1398,19 @@ function GallerySection() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            variant="outline"
-            className="rounded-full px-8 border-2"
-          >
-            View Full Gallery
-            <ChevronRight className="ml-2 w-5 h-5" />
-          </Button>
-        </div>
+            <div className="text-center mt-12">
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full px-8 border-2"
+                asChild
+              >
+                <a href="/samples" target="_blank" rel="noopener noreferrer">
+                  View Full Gallery
+                  <ChevronRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
+            </div>
       </div>
     </section>
   );
@@ -1552,15 +1605,17 @@ function TestimonialsSection() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <a 
-              href="#" 
-              className="inline-flex items-center gap-2 text-[#00b67a] font-medium hover:underline"
-            >
-              See all 1,000+ reviews on Trustpilot
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+            <div className="text-center mt-12">
+              <a 
+                href="https://www.trustpilot.com/review/betterpic.io" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#00b67a] font-medium hover:underline"
+              >
+                See all 1,000+ reviews on Trustpilot
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
         </div>
       </section>
     );
@@ -1568,19 +1623,43 @@ function TestimonialsSection() {
 
 function GetQuoteSection() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    firstName: "",
+    lastName: "",
+    teamSize: "10",
     companyName: "",
-    teamSize: "",
-    projectType: "",
-    message: "",
+    mainUseCase: "",
+    email: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/submit-quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to submit form. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -1604,7 +1683,7 @@ function GetQuoteSection() {
   }
 
   return (
-    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-slate-900" id="get-quote">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
@@ -1649,26 +1728,101 @@ function GetQuoteSection() {
           </div>
 
           <div className="bg-white rounded-3xl p-8 lg:p-10">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      placeholder="John"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      placeholder="Smith"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="teamSize" className="block text-sm font-medium text-foreground mb-2">
+                      Team Size *
+                    </label>
+                    <input
+                      type="text"
+                      id="teamSize"
+                      name="teamSize"
+                      value={formData.teamSize}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      placeholder="10"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="companyName" className="block text-sm font-medium text-foreground mb-2">
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      placeholder="Acme Inc."
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Full Name *
+                  <label htmlFor="mainUseCase" className="block text-sm font-medium text-foreground mb-2">
+                    Main Use Case *
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                  <select
+                    id="mainUseCase"
+                    name="mainUseCase"
+                    value={formData.mainUseCase}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                    placeholder="John Smith"
-                  />
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
+                  >
+                    <option value="">Select main use case</option>
+                    <option value="Website Team/About Us Section">Website Team/About Us Section</option>
+                    <option value="Email Signatures">Email Signatures</option>
+                    <option value="Corporate Gifting">Corporate Gifting</option>
+                    <option value="Events">Events</option>
+                    <option value="Social Media Profile Picture">Social Media Profile Picture</option>
+                    <option value="Portfolio for Actors, Realtors, etc">Portfolio for Actors, Realtors, etc</option>
+                    <option value="Print">Print</option>
+                    <option value="Online Platforms (Upwork, Slack, Teams, etc)">Online Platforms (Upwork, Slack, Teams, etc)</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Work Email *
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -1678,114 +1832,27 @@ function GetQuoteSection() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                    placeholder="john@company.com"
+                    placeholder="John@company.com"
                   />
                 </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                    placeholder="+1 (555) 000-0000"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="companyName" className="block text-sm font-medium text-foreground mb-2">
-                    Company Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="companyName"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                    placeholder="Acme Inc."
-                  />
-                </div>
-              </div>
+                {error && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p className="text-sm text-red-600">{error}</p>
+                  </div>
+                )}
 
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="teamSize" className="block text-sm font-medium text-foreground mb-2">
-                    Team Size *
-                  </label>
-                  <select
-                    id="teamSize"
-                    name="teamSize"
-                    value={formData.teamSize}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
-                  >
-                    <option value="">Select team size</option>
-                    <option value="2-10">2-10 people</option>
-                    <option value="11-25">11-25 people</option>
-                    <option value="26-50">26-50 people</option>
-                    <option value="51-100">51-100 people</option>
-                    <option value="101-250">101-250 people</option>
-                    <option value="251-500">251-500 people</option>
-                    <option value="500+">500+ people</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="projectType" className="block text-sm font-medium text-foreground mb-2">
-                    Project Type *
-                  </label>
-                  <select
-                    id="projectType"
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none"
-                  >
-                    <option value="">Select project type</option>
-                    <option value="team-headshots">Team Headshots</option>
-                    <option value="executive-portraits">Executive Portraits</option>
-                    <option value="linkedin-photos">LinkedIn Photos</option>
-                    <option value="company-directory">Company Directory</option>
-                    <option value="marketing-materials">Marketing Materials</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={loading}
+                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-full h-14 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? "Submitting..." : "Get Your Quote"}
+                  {!loading && <ArrowRight className="ml-2 w-5 h-5" />}
+                </Button>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Tell us about your project
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
-                  placeholder="Any specific requirements, timeline, or questions..."
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full h-14 text-lg"
-              >
-                Get Your Quote
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-
-              <p className="text-xs text-center text-muted-foreground">
+                <p className="text-xs text-center text-muted-foreground">
                 By submitting, you agree to our{" "}
                 <a href="#" className="text-primary hover:underline">Privacy Policy</a>
                 {" "}and{" "}
@@ -1887,22 +1954,28 @@ function CTASection() {
           Join thousands of companies who trust us for their professional headshots. 
           Get started in minutes with no commitment.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-white text-primary hover:bg-white/90 rounded-full px-10 h-14 text-lg font-semibold"
-          >
-            Get a Quote
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-full px-10 h-14 text-lg"
-          >
-            Book a Demo
-          </Button>
-        </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 rounded-full px-10 h-14 text-lg font-semibold"
+              onClick={() => {
+                document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Get a Quote
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-full px-10 h-14 text-lg"
+              onClick={() => {
+                document.getElementById('get-quote')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Book a Demo
+            </Button>
+          </div>
         <p className="text-white/70 mt-8 text-sm">
           No credit card required • Free consultation • Volume discounts available
         </p>
