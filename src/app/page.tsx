@@ -36,6 +36,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 function Header() {
@@ -787,21 +788,19 @@ function CaseStudiesSection() {
               </div>
               
               <div className="px-6 pb-6">
-                <a
+                <Link
                   href={
                     study.company === "BetterHealth Group" 
-                      ? "https://www.betterpic.io/case-studies/betterhealth-group"
+                      ? "/case-studies/betterhealth-group"
                       : study.company === "Elucient Dental"
-                      ? "https://www.betterpic.io/case-studies/elucient-betterpic"
-                      : "https://www.betterpic.io/case-studies/wyn-solutions"
+                      ? "/case-studies/elucient-betterpic"
+                      : "/case-studies/wyn-solutions"
                   }
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-full gap-2 bg-slate-100 hover:bg-slate-200 text-foreground font-medium py-3 rounded-xl transition-colors"
                 >
                   Read case study
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </article>
           ))}
