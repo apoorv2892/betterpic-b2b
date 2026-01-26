@@ -512,10 +512,10 @@ function TeamShowcaseSection() {
 function BeforeAfterSection() {
   const transformations = [
     {
-      before: "1507003211169-0a1dd7228f2d",
-      after: "1560250097-0b93528c311a",
-      name: "John Smith",
-      role: "Software Engineer",
+      before: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-1-resized-1769426109978.jpg?width=300&height=300&resize=cover&quality=75",
+      after: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-resized-1769426109614.jpg?width=300&height=300&resize=cover&quality=75",
+      name: "Samuel Kim",
+      role: "LinkedIn User",
     },
     {
       before: "1438761681033-6461ffad8d80",
@@ -550,7 +550,7 @@ function BeforeAfterSection() {
                   <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">Before</p>
                   <div className="rounded-xl overflow-hidden aspect-square relative">
                     <Image
-                      src={`https://images.unsplash.com/photo-${item.before}?w=300&h=300&fit=crop&crop=face`}
+                      src={item.before.startsWith('http') ? item.before : `https://images.unsplash.com/photo-${item.before}?w=300&h=300&fit=crop&crop=face`}
                       alt="Before"
                       fill
                       className="object-cover grayscale-[30%]"
@@ -564,7 +564,7 @@ function BeforeAfterSection() {
                   <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">After</p>
                   <div className="rounded-xl overflow-hidden aspect-square relative">
                     <Image
-                      src={`https://images.unsplash.com/photo-${item.after}?w=300&h=300&fit=crop&crop=face`}
+                      src={item.after.startsWith('http') ? item.after : `https://images.unsplash.com/photo-${item.after}?w=300&h=300&fit=crop&crop=face`}
                       alt="After"
                       fill
                       className="object-cover"
