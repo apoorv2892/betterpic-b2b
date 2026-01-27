@@ -1117,7 +1117,7 @@ function PricingSection() {
     { text: "Team admin dashboard", included: true },
     { text: "Priority support", included: teamSize >= 11 },
     { text: "Custom backgrounds upload", included: teamSize >= 26 },
-    { text: "Dedicated account manager", included: teamSize >= 51 },
+    { text: "SOC2 and ISO 27001 Compliant", included: teamSize >= 51 },
     { text: "API access", included: teamSize >= 101 },
     { text: "SSO integration", included: teamSize >= 101 },
     { text: "Custom SLA", included: teamSize >= 251 },
@@ -1464,7 +1464,7 @@ function IndustriesSection() {
         "Onboard new hires in hours, not weeks",
         "Perfect consistency across global offices",
         "Bulk pricing for large teams",
-        "Dedicated account manager",
+        "SOC2 and ISO 27001 Compliant",
       ],
     },
   ];
