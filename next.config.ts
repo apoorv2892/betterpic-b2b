@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 
-const LOADER = path.resolve(process.cwd(), 'src/visual-edits/component-tagger-loader.js');
-
 const nextConfig: NextConfig = {
   distDir: '.next',
   images: {
