@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 const nextConfig: NextConfig = {
-  distDir: '.next',
   images: {
     remotePatterns: [
       {
@@ -15,7 +14,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-   
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -34,4 +32,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-// Orchids restart: 1769086751583
