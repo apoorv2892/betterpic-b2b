@@ -513,15 +513,17 @@ function BeforeAfterSection() {
   const transformations = [
     {
       before: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-1-resized-1769426109978.jpg?width=300&height=300&resize=cover&quality=75",
-      after: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-resized-1769426109614.jpg?width=300&height=300&resize=cover&quality=75",
+      after: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-resized-1769426109614.jpg?width=600&quality=80",
       name: "Samuel Kim",
       role: "LinkedIn User",
+      afterPosition: "object-top",
     },
     {
       before: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-2-1769426557942.jpg?width=300&height=300&resize=cover&quality=75",
-      after: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-3-resized-1769426559030.jpg?width=300&height=300&resize=cover&quality=75",
+      after: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c4385161-7b8b-4b6d-975c-aacd4b046a85/BetterPic_Headshot-3-resized-1769426559030.jpg?width=600&quality=80",
       name: "Rebecca",
       role: "LinkedIn User",
+      afterPosition: "object-top",
     },
     {
       before: "1500648767791-00dcc994a43e",
@@ -560,17 +562,17 @@ function BeforeAfterSection() {
                 <div className="flex items-center">
                   <ArrowRight className="w-6 h-6 text-primary" />
                 </div>
-                <div className="flex-1">
-                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">After</p>
-                  <div className="rounded-xl overflow-hidden aspect-square relative">
-                    <Image
-                      src={item.after.startsWith('http') ? item.after : `https://images.unsplash.com/photo-${item.after}?w=300&h=300&fit=crop&crop=face`}
-                      alt="After"
-                      fill
-                      className="object-cover"
-                    />
+                  <div className="flex-1">
+                    <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">After</p>
+                    <div className="rounded-xl overflow-hidden aspect-square relative">
+                      <Image
+                        src={item.after.startsWith('http') ? item.after : `https://images.unsplash.com/photo-${item.after}?w=300&h=300&fit=crop&crop=face`}
+                        alt="After"
+                        fill
+                        className={`object-cover ${item.afterPosition || ""}`}
+                      />
+                    </div>
                   </div>
-                </div>
               </div>
               <div className="text-center pt-4 border-t border-border">
                 <p className="font-semibold text-foreground">{item.name}</p>
